@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    img{
+        transition:all 0.8s ease;
+    }
+    .owl-item:hover{
+        position:relative;
+        z-index:9999;
+
+    }
+    .owl-item:hover img{
+        transform:scale(1.15);
+    }
+    .show-each{
+        padding-left:0;
+        padding-right:0;
+    }
+    .show-before::before{
+        content:"";
+        display:block;
+        position:absolute;
+        width:100%;
+        height:100%;
+        background-color:rgba(0,0,0,0.5);
+        transition:all 0.3s ease
+    }
+    .show-each:hover .show-before::before{
+        background-color:rgba(0,0,0,0.1);
+    }
+    h4{
+        padding-left:20px
+    }
+    .small-text {
+        color: rgb(237,75,53);
+        margin-left: 10px;
+        display: none;
+    }
+</style>
+
+<div>
+    <div class="col-md-8" style="background-color:rgb(48,48,56);height:393.6px">
+        <div class="owl-carousel owl-theme">
+            <div class="item" style="margin-top:10px;z-index:9999"><img src="~/img/movie/夏洛特烦恼.PNG" /></div>
+            <div class="item" style="margin-top:10px"><img src="~/img/movie/战狼.PNG" /></div>
+            <div class="item" style="margin-top:10px"><img src="~/img/movie/你的名字.PNG" /></div>
+            <div class="item" style="margin-top:10px"><img src="~/img/movie/西游记之大圣归来.PNG" /></div>
+            <div class="item" style="margin-top:10px"><img src="~/img/movie/惊天魔盗团.PNG" /></div>
+            <div class="item" style="margin-top:10px"><img src="~/img/movie/大鱼海棠.PNG" /></div>
+            <div class="item" style="margin-top:10px"><img src="~/img/movie/霸王别姬.PNG" /></div>
+            <div class="item" style="margin-top:10px"><img src="~/img/movie/叶问3.PNG" /></div>
+            <div class="item" style="margin-top:10px"><img src="~/img/movie/嫌疑人X的献身.PNG" /></div>
+            <div class="item" style="margin-top:10px"><img src="~/img/movie/阿凡达.PNG" /></div>
+        </div>
+    </div>
+    <div class="col-md-4" style="background-color:rgba(30,30,40,0.5);padding-left:0;padding-right:0">
+        <div class="col-md-12 show-each" onmouseover="showSmall(0)" onmouseout="hideSmall(0)">
+            <div class="show-before"></div>
+            <h4 class="title-text">夏洛特烦恼<small class="small-text">年度魔性黑马喜剧</small></h4>
+        </div>
+        <div class="col-md-12 show-each" onmouseover="showSmall(1)" onmouseout="hideSmall(1)">
+            <div class="show-before"></div>
+            <h4 class="title-text">战狼<small class="small-text">血性演绎战地兵狼</small></h4>
+        </div>
+        <div class="col-md-12 show-each" onmouseover="showSmall(2)" onmouseout="hideSmall(2)">
+            <div class="show-before"></div>
+            <h4 class="title-text">你的名字<small class="small-text">新海诚口碑票房双爆神作</small></h4>
+        </div>
+        <div class="col-md-12 show-each" onmouseover="showSmall(3)" onmouseout="hideSmall(3)">
+            <div class="show-before"></div>
+            <h4 class="title-text">西游记之大圣归来<small class="small-text">大圣脱胎换骨惊艳四方</small></h4>
+        </div>
+        <div class="col-md-12 show-each" onmouseover="showSmall(4)" onmouseout="hideSmall(4)">
+            <div class="show-before"></div>
+            <h4 class="title-text">惊天魔盗团<small class="small-text">FBI智斗魔术师天团</small></h4>
+        </div>
+        <div class="col-md-12 show-each" onmouseover="showSmall(5)" onmouseout="hideSmall(5)">
+            <div class="show-before"></div>
+            <h4 class="title-text">大鱼海棠<small class="small-text">惊艳唯美中国画风</small></h4>
+        </div>
+        <div class="col-md-12 show-each" onmouseover="showSmall(6)" onmouseout="hideSmall(6)">
+            <div class="show-before"></div>
+            <h4 class="title-text">霸王别姬<small class="small-text">华语文艺巅峰作品</small></h4>
+        </div>
+        <div class="col-md-12 show-each" onmouseover="showSmall(7)" onmouseout="hideSmall(7)">
+            <div class="show-before"></div>
+            <h4 class="title-text">叶问3<small class="small-text">甄子丹叶问火力再开</small></h4>
+        </div>
+
+    </div>
+</div>
+<script>
+    $('.owl-carousel').owlCarousel({
+        center:true,
+        items: 3,
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true
+    })
+
+    function showSmall(index) {
+        $(".title-text").eq(index).css("font-size", parseInt($(".title-text").eq(index).css("font-size")) + 4 + "px");
+        $(".title-text").eq(index).css("color", "rgb(237,75,53)");
+        $(".small-text").eq(index).show();
+        $("button.owl-dot").eq(index).click();
+    }
+    function hideSmall(index) {
+        $(".title-text").eq(index).css("font-size", parseInt($(".title-text").eq(index).css("font-size")) - 4 + "px");
+        $(".title-text").eq(index).css("color", "rgb(255,255,255)");
+        $(".small-text").eq(index).hide();
+    }
+</script>

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="OrcasThemes">
+    <title>影院管理系统</title>
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="~/Content/screen.css">
+    <link rel="stylesheet" href="~/Content/animation.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.css">
+    <link href="~/Content/lity.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/owlcarousel/assets/owl.theme.default.min.css">
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/owlcarousel/owl.carousel.min.js"></script>
+    <style>
+        .link:hover {
+            color: red;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="home1" class="container-fluid">
+        <div class="row home-mega-menu ">
+            <div class="col-md-12">
+                <nav class="navbar navbar-default">
+                    <div class="collapse navbar-collapse js-navbarcollapse megabg dropshd">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("主页", "Index", "Home")</li>
+                            <li><a href="single-video.html">个人信息</a></li>
+                            <li><a href="single-page.html">反馈</a></li>
+                            <li><a href="single-page-with-img.html">查看消息</a></li>
+                            <li><a href="single-page-with-img.html">收藏夹</a></li>
+                            <li><a href="login.html">历史订票记录</a></li>
+                        </ul>
+                        <div class="col-md-3 user-login">
+                            <!--登录信息-->
+                            @if (Session["uid"] == null)
+                            {
+                                <a href="~/Account/Login">
+                                    <img src="~/img/user-header.JPG" style="width:40px;height:40px" />
+                                </a>
+                                <div class="col-md-8">
+                                    <h4>
+                                        请 @Html.ActionLink("登录", "Login","Account",null,new { @class = "link" })
+                                    </h4>
+                                </div>
+                            }
+                            else
+                            {
+                                <img src="~/img/user-header.JPG" style="width:40px;height:40px" />
+                                <div class="col-md-8">
+                                    <h4>
+                                        欢迎登录,@Session["uid"]
+                                    </h4>
+                                </div>
+                            }
+                        </div>
+                        <div class="search-block">
+                            <form>
+                                <input type="search" placeholder="Search">
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>                    
+    </div>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+</body>
+</html>
+
