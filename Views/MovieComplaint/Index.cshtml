@@ -1,1 +1,36 @@
 
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<h4>反馈中心</h4>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="OrcasThemes">
+    <title>影院管理系统</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/screen.css">
+    <script type="text/javascript">
+        function cal() {
+            var len = document.getElementById('Complaint').value.length;
+            var temp = 200 - len;
+            if (temp >= 0) {
+                document.getElementById('text_count').innerHTML = "剩余可输入" + temp + "字";
+            }
+            else {
+                document.getElementById('Complaint').value = document.getElementById('Complaint').value.substring(0, 200);
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="status-upload">
+        <form method="post" action="/MovieComplaint/Index">
+            <div><textarea runat="server" placeholder="想说点什么..." oninput="cal();" type="text" id="Complaint" name="Complaint"></textarea></div>
+            <div class="comment-box-control">
+                <span id="text_count"> 剩余可输入200字</span>
+                <button type="submit" class="btn pull-right">提交</button>
+            </div>
+        </form>
+    </div>
+</body>
