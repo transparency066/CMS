@@ -12,6 +12,7 @@ namespace MovieWeb.Models
         public DateTime U2Mtime { set; get; }
         public DateTime M2Utime { set; get; }
         public string M2Utext { set; get; }
+
         public List<M2UInfo> m2UInfos { set; get; }
     }
 }
