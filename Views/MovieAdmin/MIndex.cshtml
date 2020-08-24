@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "MIndex";
+}
+<style type="text/css">
+    #useradmin_jumbotron {
+        background-color: transparent;
+    }
+
+    #rowchangecwb {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+</style>
+
+<div class="jumbotron" id="useradmin_jumbotron">
+    <h1>影片管理主页</h1>
+    <p class="lead">欢迎来到影片管理主页，在这里你可以添加删除查找或者修改影片的信息!</p>
+    <p><a href="MAllinf" class="btn btn-primary btn-lg">查看所有影片 &raquo;</a></p>
+</div>
+
+<div class="row" id="rowchangecwb">
+    <div class="col-md-4">
+        <h2>添加影片信息</h2>
+        <p>
+            当影院有新的新片要上映时，在这里来添加新影片的信息
+        </p>
+        <p><a class="btn btn-default" href="MInsert">添加影片 &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>删除影片信息</h2>
+        <p>当某些影片因某些原因被下架时，在这里来删除需要下架的影片，与该影片有关的场次影票等其他信息，也会一并删除</p>
+        <p><a class="btn btn-default" href="MDelete">删除影片 &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>查看/修改影片信息</h2>
+        <p>管理员在这里可以查看影片的信息，查看之后也可以修改影片的信息</p>
+        <p><a class="btn btn-default" href="MUpdate">查看修改影片 &raquo;</a></p>
+    </div>
+</div>
+
+

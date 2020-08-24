@@ -1,0 +1,18 @@
+﻿@using 影院管理系统.Models;
+@model AllMListViewModel
+@{
+    ViewBag.Title = "MAllinf";
+}
+
+
+
+
+<h2>所有影片的信息</h2>
+<h3>影院已上架 @Model.Count 部电影</h3>
+<ul>
+   
+    @foreach(var post in Model.AllMs)
+    {
+    <li>影片ID: @post.ID  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名字: @post.Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 类型: @post.Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 时长: @post.Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 上映日期: @post.Ondate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 下线日期: @post.Outdate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 票价: @post.Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 简介: @post.Intro &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 图片url: @post.Url</li>
+    }
+</ul>
