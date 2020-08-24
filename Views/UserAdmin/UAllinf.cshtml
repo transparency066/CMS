@@ -1,0 +1,16 @@
+﻿@using 影院管理系统.Models;
+@model AllUListViewModel
+@{
+    ViewBag.Title = "UAllinf";
+}
+
+
+<h2>所有用户的信息</h2>
+<h3>用户数量为 @Model.Count 位</h3>
+<ul>
+
+    @foreach (var post in Model.AllUs)
+    {
+        <li>账号ID: @post.Account  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 昵称: @post.Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 性别: @post.Sex &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 电话: @post.Phone &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+    }
+</ul>
