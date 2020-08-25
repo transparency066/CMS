@@ -1,0 +1,154 @@
+﻿@using MovieWeb.Models
+@model M2UInfo
+@{
+    ViewBag.Title = "查看回复内容";
+}
+
+<style>
+    body {
+        background-color: #080b12;
+    }
+    #M2UInfo {
+        background-color: #080b12;
+    }
+
+    .panel {
+        margin-bottom: 30px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        background-color: #080b12;
+    }
+
+    .panel-group {
+        width: 100%;
+        margin-top: 24px;
+        margin-bottom: 14px;
+    }
+
+    .panel-title {
+        vertical-align: middle;
+    }
+
+    .panel-heading{
+        margin:0;
+        padding:0;
+        border-radius:8px;
+    }
+
+    .panel-default {
+        width: 100%;
+        border-top: 0;
+    }
+
+        .panel-default:first-child {
+            border-top: 0;
+        }
+
+    .panel-body {
+        font-size: 14px;
+        font-weight: 400;
+        color: #080b12;
+        line-height: 26px;
+        padding-bottom: 20px;
+        text-align: left;
+        padding: 20px;
+        background-image: linear-gradient(to right,#8e9eab,#d7d2cc);
+        border-radius: 0 0 8px 8px;
+        border-top: 1px solid #efefef;
+    }
+     .panel-body .m2u_text{
+         font-size:20px;
+     }
+
+    .panel-default {
+        width: 100%;
+        border-top: 0;
+    }
+
+    .panel-title {
+        vertical-align: middle;
+        border-radius: 8px;
+    }
+
+        .panel-title a {
+            font-size: 16px;
+            font-weight: 500;
+            color: #080b12 !important;
+            padding: 20px 20px 18px;
+            display: block;
+            line-height: 26px;
+            background-image: linear-gradient(to right,#8e9eab,#d7d2cc);
+            border-radius: 8px 8px 0 0;
+            margin-top: 20px;
+        }
+
+            .panel-title a.collapsed {
+                border-radius: 8px;
+                background-image: linear-gradient(to right,#8e9eab,#d7d2cc);
+            }
+
+        .panel-title > a:before {
+            float: right !important;
+            font-family: 'Roboto', sans-serif;
+            content: "\f058";
+            padding-right: 0px;
+            font-size: 16px;
+            padding-top: 2px;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+        }
+
+        .panel-title > a.collapsed:before {
+            float: right !important;
+            content: "\f058";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 400;
+        }
+
+        .panel-title p {
+            font-size: 20px;
+        }
+
+        .panel-title a .m2u_time{
+            margin-right:20px;
+            font-size:18px;
+            float:right;
+        }
+</style>
+
+
+<div class="container" id="M2UInfo">
+    <div class="col-md-12 col-lg-12">
+        <h2>查看回复内容</h2>
+        @if (Model.m2UInfos.Count == 0)
+        {
+            <h1 style="height:300px;text-align:center;padding-top:150px;">目前还没有收到任何回复哟&nbsp!</h1>
+        }
+        @if (Model.m2UInfos.Count > 0)
+        {
+            <div class="panel-group" id="my_according">
+                <div class="panel panel-default">
+                    @for (int i = 0; i < Model.m2UInfos.Count; ++i)
+                    {
+                        string nowheading = "heading" + i;
+                        string id_nowcollapse = "#collapse" + i;
+                        string nowcollapse = "collapse" + i;
+                        <div class="panel-heading" id=@nowheading>
+                            <div class="panel-title" style="cursor:pointer;">
+                                <a class="collapsed" data-toggle="collapse" data-target=@id_nowcollapse aria-expanded="false" aria-controls=@nowcollapse>
+                                    <p><span>管理员</span><span>@Model.m2UInfos[i].mid &nbsp&nbsp&nbsp&nbsp回复:</span><span class="m2u_time">@Model.m2UInfos[i].M2Utime</span></p>
+                                </a>
+                            </div>
+                        </div>
+                        <div id=@nowcollapse class="panel-collapse collapse" role="tabpanel" aria-labelledby=@nowheading data-parent="#my_accordion">
+                            <div class="panel-body">
+                                <p class="m2u_text">@Model.m2UInfos[i].M2Utext</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

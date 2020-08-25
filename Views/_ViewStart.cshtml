@@ -1,3 +1,10 @@
 ﻿@{
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    var controller = ViewContext.RouteData.Values["controller"].ToString();
+
+    string[] user = new string[] { "Home", "M2UInfo", "WishList" };
+
+    if (user.Contains(controller))
+    {
+        Layout = "~/Views/Shared/_UserLayout.cshtml";
+    }
 }

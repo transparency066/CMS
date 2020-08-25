@@ -9,6 +9,8 @@
     <!-- Bootstrap core CSS -->
     <link href="~/Content/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/mjx_package/css")
     <link rel="stylesheet" href="~/Content/screen.css">
     <link rel="stylesheet" href="~/Content/animation.css">
     <!--[if IE 7]>
@@ -50,21 +52,36 @@
                     </div>
                     <div class="collapse navbar-collapse js-navbar-collapse megabg dropshd ">
                         <ul class="nav navbar-nav">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="single-video.html">Video Post</a></li>
-                            <li><a href="single-page.html">Single Page - Basic</a></li>
-                            <li><a href="single-page-with-img.html">Single Page - with Image</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="gallery-video-boxed.html">Gallery</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li>@Html.ActionLink("主页", "Index", "Home")</li>
+                            <li><a href="single-video.html">个人信息</a></li>
+                            <li>@Html.ActionLink("反馈", "Index", "MovieComplaint")</li>
+                            <li><a href="@Url.Content("~/M2UInfo")">查看消息</a></li>
+                            <li><a href="@Url.Content("~/WishList")">收藏夹</a></li>
+                            <li><a href="login.html">历史订票记录</a></li>
                         </ul>
-                        @*<ul class="social">
-                            <li class="social-facebook"><a href="#" class="fa fa-facebook social-icons"></a></li>
-                            <li class="social-google-plus"><a href="#" class="fa fa-google-plus social-icons"></a></li>
-                            <li class="social-twitter"><a href="#" class="fa fa-twitter social-icons"></a></li>
-                            <li class="social-youtube"><a href="#" class="fa fa-youtube social-icons"></a></li>
-                            <li class="social-rss"><a href="#" class="fa fa-rss social-icons"></a></li>
-                        </ul>*@
+                        <div class="col-md-3 user-login">
+                            <!--登录信息-->
+                            @if (Session["uid"] == null)
+                            {
+                                <a href="~/Account/Login">
+                                    <img src="~/img/user-header.JPG" style="width:40px;height:40px" />
+                                </a>
+                                <div class="col-md-8">
+                                    <h4>
+                                        请 @Html.ActionLink("登录", "Login", "Account", null, new { @class = "link" })
+                                    </h4>
+                                </div>
+                            }
+                            else
+                            {
+                                <img src="~/img/user-header.JPG" style="width:40px;height:40px" />
+                                <div class="col-md-8">
+                                    <h4>
+                                        欢迎登录,@Session["uid"]
+                                    </h4>
+                                </div>
+                            }
+                        </div>
                         <div class="search-block">
                             <form>
                                 <input type="search" placeholder="Search">
@@ -75,6 +92,9 @@
                 </nav>
             </div>
         </div>
+    </div>
+
+    <div class="container">
         @RenderBody()
         <!-- CORE -->
         @*<div class="row">
@@ -1808,5 +1828,9 @@
                </div>*@
     </div>
 </body>
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
 </html>
 
