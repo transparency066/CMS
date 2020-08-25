@@ -11,7 +11,7 @@ namespace MovieWeb.Controllers
     public class MovieComplaintController : Controller
     {
         // GET: MovieComplaint
-        Manager manager = new Manager();
+        Manager_nyx manager = new Manager_nyx();
 
         [HttpGet]
         public ActionResult Index()
