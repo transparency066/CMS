@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "SendMessage";
+}
+<style type="text/css">
+    #center {
+        width: 1000px;
+        height: 1000px;
+        margin: 0 auto;
+        padding-left: 150px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .point {
+        width: 300px;
+        text-align: left
+    }
+
+    .input_text {
+        width: 320px;
+        height: 50px;
+        border: 1px solid #808080
+    }
+
+    .btn-success {
+        color : #ffffff
+    }
+</style>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#submit").click(function () {
+            var flag = 1;
+
+            if ($("#adminID").val().length == 0) {
+                alert("ID不能为空\n");
+                flag = 0;
+            }
+            else if ($("#reply").val().length == 0) {
+                alert("信息不能为空\n");
+                flag = 0;
+            }
+            if (flag == 0) {
+                var currentDate = new Date();
+                var results = {
+                    "ReplyTime": currentDate.toLocaleDateString(),
+                    "AdminID": AdminID,
+                    "ReplyMessage": mess
+                };
+                $.get('@Url.Action("SendMess","MessageSend")', results)
+                    .done(function (data) {
+                        if (data.flag == 1) {
+                            alert("信息发送成功!");
+                        }
+                        else {
+                            alert("信息发送失败!");
+                        }
+                    })
+            }
+        })
+    });
+</script>
+
+<div id="center">
+    <h2>回复信息</h2>
+    <form>
+        <table>
+            <tr>
+                <td class="point">请输入你的ID：</td>
+                <td><input type="text" class="input_text" id="adminID" /></td>
+            </tr>
+            <tr><td><br /></td></tr>
+            <tr>
+                <td class="point">请输入要回复的内容：</td>
+                <td><input type="text" class="input_text" id="reply" /></td>
+            </tr>
+            <tr><td><br /></td></tr>
+            <tr>
+                <td><input type="reset" class="btn-warning" value="重置信息" /></td>
+                <td><input type="button" class="btn-success" value="提交信息" id="submit" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
