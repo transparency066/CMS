@@ -22,7 +22,7 @@ namespace MovieWeb.Controllers
             }
             else
             {
-                //Session.Remove("ReturnToM2UInfo");
+                Session.Remove("ReturnToM2UInfo");
                 MovieBusinessLogic.User user = new MovieBusinessLogic.User();
                 var m2u_list = user.getM2UModels(uid).Select(m2u_info => new M2UInfo()
                 {

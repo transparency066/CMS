@@ -58,7 +58,9 @@ namespace MovieWeb.Controllers
             else
             {
                 Session["uid"] = account.UserName;
-                return RedirectToAction("Index", "Home");
+                if (Session["ReturnToWishList"] != null) return Redirect("/WishList");
+                else if (Session["ReturnToM2UInfo"] != null) return Redirect("/M2UInfo");
+                else return RedirectToAction("Index", "Home");
             }
         }
 
