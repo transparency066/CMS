@@ -1,3 +1,22 @@
-﻿@{
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+﻿
+@{
+    var controller = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+    var action = ViewContext.RouteData.Values["action"].ToString().ToLower();
+
+    string[] lController = new string[] { "screening", "seatslist" };
+    string[] Accout = new string[] { "modify","create","hall" };
+    //   string[] lAction = new string[] { "index", "edit", "create" };
+
+    if (lController.Contains(controller))
+    {
+        Layout = "~/Views/Shared/_ListLayout.cshtml";
+    }
+    else if(Accout.Contains(controller))
+    {
+        Layout = "~/Views/Shared/_OperationLayout.cshtml";
+    }
+    else
+    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
 }
