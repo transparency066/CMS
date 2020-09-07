@@ -16,7 +16,19 @@ namespace MovieWeb.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            if (Session["uid"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            string uid = System.Web.HttpContext.Current.Session["uid"].ToString();
+            var complaints = manager.GetAllComplaints(uid).Select(complaint => new Complaint()
+            {
+                ComplaintTime = complaint.ComplaintTime,
+                userID = complaint.userID,
+                ComplaintContent = complaint.ComplaintContent,
+                isReply = complaint.isReply
+            }).ToList();
+            return View(complaints);
         }
         [HttpPost]
         public ActionResult Index(FormCollection txt)
@@ -24,6 +36,7 @@ namespace MovieWeb.Controllers
             string content = txt["Complaint"];
             DateTime time = DateTime.Now;
             int reply = 0;
+            int complainCode = 0;
             if (Session["uid"] == null)
             {
                 return RedirectToAction("Login", "Account");
@@ -33,15 +46,14 @@ namespace MovieWeb.Controllers
                 string uid = System.Web.HttpContext.Current.Session["uid"].ToString();
                 if (manager.Complain(time, uid, content, reply) > 0)
                 {
-                    Response.Write("提交成功,谢谢您的反馈！");
+                    complainCode = 1;
+                    ViewBag.complainCode = 1;
                 }
                 else
                 {
-                    Response.Write("提交失败！");
-
+                    ViewBag.complainCode = 0;
                 }
-
-                return View();
+                return Index();
             }
         }
     }
