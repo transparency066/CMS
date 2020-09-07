@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<script type="text/javascript">
+    function cal() {
+        var len = document.getElementById('PostContent').value.length;
+        var temp = 200 - len;
+        if (temp >= 0) {
+            document.getElementById('text_count').innerHTML = "剩余可输入" + temp + "字";
+        }
+        else {
+            document.getElementById('PostContent').value = document.getElementById('PostContent').value.substring(0, 200);
+        }
+    };
+</script>
+<div class="status-upload">
+    <form method="post" action="/MovieComment/Index">
+        <textarea runat="server" placeholder="想说点什么..." oninput="cal();" type="text" name="PostContent"></textarea>
+        <div class="comment-box-control">
+            <span id="text_count"> 剩余可输入200字</span>
+            <button type="submit" class="btn pull-right">发表</button>
+        </div>
+    </form>
+    @if (ViewBag.commentCode == 1)
+    {
+        <p class="text-danger" style="font-size:16px; color:white;text-align:center;">发表成功</p>
+    }
+    @if (ViewBag.commentCode == 0)
+    {
+        <p class="text-danger" style="font-size:16px; color:white;text-align:center;">发表失败</p>
+    }
+
+</div>
+
+@foreach (MovieModel.Comment i in Model)
+{
+        <div class="col-sm-1">
+            <div class="thumbnail">
+                <img class="img-responsive user-photo" src="~/img/user-header.JPG" alt="Comment User Avatar">
+            </div>
+        </div>
+        <div class="col-sm-11">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>@i.userID</strong> <span class="pull-right">@i.commentTime</span>
+                </div>
+                <div class="panel-body">@i.commentContent</div>
+            </div>
+        </div>
+}
+
+
+
