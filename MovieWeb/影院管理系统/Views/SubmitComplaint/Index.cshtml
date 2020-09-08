@@ -1,0 +1,107 @@
+﻿@*@using MovieWeb.Models
+@model Complaint*@
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<h4>反馈中心</h4>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="OrcasThemes">
+    <title>影院管理系统</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/screen.css">
+    <script type="text/javascript">
+        function cal() {
+            var len = document.getElementById('Complaint').value.length;
+            var temp = 200 - len;
+            if (temp >= 0) {
+                document.getElementById('text_count').innerHTML = "剩余可输入" + temp + "字";
+            }
+            else {
+                document.getElementById('Complaint').value = document.getElementById('Complaint').value.substring(0, 200);
+            }
+        };
+        function show() {
+            var div = document.getElementById("history");
+            var arrow = document.getElementById("arrow");
+            if (arrow.value == "0") {
+                arrow.value = "1";
+                arrow.className = "to_top";
+               
+                div.style.display = "block";
+            }
+            else if (arrow.value == "1") {
+                arrow.value = "0";
+                arrow.className = "to_bottom";
+                div.style.display = "none";
+            }
+        };
+        
+    </script>
+    <style>
+        .to_top {
+            background-color: black;
+            display: block;
+            margin: 0 auto;
+            
+            border-bottom: 25px solid white;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+        }
+        .to_bottom {
+            background-color: black;
+            display: block;
+            margin:0 auto;
+           
+            border-top: 25px solid white;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-upload">
+        <form method="post" action="/SubmitComplaint/PutIn">
+            <div><textarea runat="server" placeholder="想说点什么..." oninput="cal();" type="text" id="Complaint" name="Complaint"></textarea></div>
+            <div class="comment-box-control">
+                <span id="text_count"> 剩余可输入200字</span>
+                <button type="submit" class="btn pull-right">提交</button>
+            </div>
+        </form>
+    </div>
+    @if (ViewBag.complainCode == 1)
+    {
+        <p class="text-danger" style="font-size:16px; color:white;text-align:center;">反馈成功</p>
+    }
+    @if (ViewBag.complainCode == 0)
+    {
+        <p class="text-danger" style="font-size:16px; color:white;text-align:center;">反馈失败</p>
+    }
+
+<h4>历史反馈记录</h4>
+<div class="comment-box-control">
+    <button class="to_bottom" onclick="show();" id="arrow" value="0"></button>
+</div>
+    <div id="history" style="display:none">
+        @foreach (var i in Model.Complaints)
+         {
+            <div class="col-sm-11">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>@i.ComplaintTime</strong>
+                        @if (i.ReplyFlag == 0)
+                         {
+                            <span class="pull-right">暂未处理</span>
+                         }
+                         @if (i.ReplyFlag == 1)
+                         {
+                            <span class="pull-right">已处理</span>
+                         }
+                    </div>
+                    <div class="panel-body">@i.ComplaintText</div>
+                </div>
+            </div>
+         }
+    </div>
+</body>

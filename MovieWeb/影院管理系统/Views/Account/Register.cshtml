@@ -1,0 +1,84 @@
+﻿@using MovieWeb.Models
+@model Account
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="OrcasThemes">
+    <title>影院管理系统</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="~/Content/screen.css">
+    <link rel="stylesheet" href="~/Content/animation.css">
+    <!--[if IE 7]>
+    <![endif]-->
+    <link rel="stylesheet" href="~/Content/font-awesome.css">
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="ie.css" type="text/css" media="screen, projection">
+    <![endif]-->
+    <link href="~/Content/lity.css" rel="stylesheet">
+</head>
+<body style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+    <img src="~/img/backgrounds/LoginBackground.gif" style="position:absolute;width:100%;height:100%" />
+    <div class="col-md-4">
+        <h2 class="title main-head-title">马上创建你的账号</h2>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, htmlAttributes: new
+        {
+            @style = "display:flex;flex-direction:column;justify-content:center;align-items:center"
+        }))
+        {
+            <div class="form-group" style="width:100%">
+                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2", @style = "margin-top:15px" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @placeholder = "Enter your username" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger", @style = "font-size:18px" })
+                </div>
+            </div>
+            <div class="form-group" style="width:100%">
+                @Html.LabelFor(model => model.PassWord, htmlAttributes: new { @class = "control-label col-md-2", @style = "margin-top:15px" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PassWord, new { htmlAttributes = new { @placeholder = "Enter your password" } })
+                    @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger", @style = "font-size:18px" })
+                </div>
+            </div>
+            <div class="form-group" style="width:100%">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2", @style = "margin-top:15px" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @placeholder = "Enter your Name" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-size:18px" })
+                </div>
+            </div>
+            <div class="form-group" style="width:100%">
+                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2", @style = "margin-top:15px" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @placeholder = "Enter your PhoneNumber" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger", @style = "font-size:18px" })
+                </div>
+            </div>
+            <div class="form-group" style="width:100%">
+                @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2", @style = "margin-top:15px" })
+                <div class="col-md-10" style="margin-top:15px">
+                    <p style="float:left">男</p>
+                    @Html.RadioButtonFor(model => Model.Sex, 1, new { @class = "col-md-2", @checked = true })
+                    <p style="float:left">女</p>
+                    @Html.RadioButtonFor(model => Model.Sex, 0, new { @class = "col-md-2" })
+                    @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger", @style = "font-size:18px" })
+                </div>
+            </div>
+            if (ViewBag.RegisterCode == 0)
+            {
+                <p class="text-danger">该用户名已被占用</p>
+            }
+            <button class="access-btn" type="submit" name="submit" style="margin:20px auto">注册</button>
+        }
+    </div>
+</body>
+</html>

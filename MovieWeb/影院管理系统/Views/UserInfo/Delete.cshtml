@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Delect";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style type="text/css">
+    #center {
+        width: 1000px;
+        height: 1000px;
+        margin: 0 auto;
+        padding-left: 150px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .left1 {
+        width: 300px;
+        text-align: left
+    }
+
+    .right1 {
+        width: 320px;
+        height: 50px;
+        border: 1px solid #808080
+    }
+
+    #getbackbtn{
+        visibility:hidden;
+    }
+</style>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    var currentacc=0;
+    $(document).ready(function ()
+    {
+        $("#delete").click(function () {
+            alert("test");
+            var account = currentacc;
+            var result = { "Account": account };
+            $.get('@Url.Action("DeletetheUser", "UserAdmin")', result)
+                .done(function (data)
+                {
+                    if (data == 2) {
+                        alert("删除用户信息成功!");
+                        var result = "删除用户信息成功!删除的账号为:" + account;
+                        $("#getback2").html(result);
+                    }
+                    else { alert("删除用户信息失败!"); }
+                })
+                .fail(function (data)
+                {
+                    alert("删除用户信息失败!");
+                })
+
+            
+        });
+
+        $("#submitinf").click(function () {
+            var account = $("#account").val();
+            var result = { "Account": account };
+            currentacc = account;
+            $.get('@Url.Action("SearchtheUser", "UserAdmin")',result)
+                .done(function (data)
+                {
+                    if (data.flag == 1) {
+                        alert("查找用户信息成功!");
+                        var result = "<br>成功查找到用户：" + data.Name + "<br>该用户的账号：" + data.Account
+                            + "<br>该用户的密码：" + data.Password
+                            + "<br>该用户的电话：" + data.Phone
+                            + "<br>该用户的性别(1是男，0是女）：" + data.Sex;
+                            //+ '<table><tr><td><input type="button" class="btn-danger" value="确定删除" id="delect" /></td><td></td></tr></table>';
+                        $("#getback").html(result);
+                        // $("#getbackbtn").html(btn);
+                        $("#getbackbtn").css("visibility","visible");
+                    }
+                    else
+                    {
+                        alert("未找到该用户!");
+                        var result = "该用户不存在!";
+                        $("#getback").html(result);
+                    }
+
+                })
+                .fail(function (data)
+                {
+                    alert("查找用户信息失败!");
+                })
+        });
+
+
+    }
+        )
+</script>
+
+<div id="center">
+    <h2>删除用户账号信息</h2>
+    <form>
+        <table>
+            <tr>
+                <td class="left1">请输入要删除的用户账号：</td>
+                <td><input type="text" class="right1" id="account" /></td>
+            </tr>
+            <tr><td><br /></td></tr>
+            <tr>
+                <td><input type="reset" class="btn-warning" value="重置信息" /></td>
+                <td><input type="button" class="btn-success" value="提交信息" id="submitinf" /></td>
+            </tr>
+        </table>
+    </form>
+    <div id="getback" class="text-warning"></div>
+    <div id="getbackbtn"><table><tr><td><input type="button" class="btn-danger" value="确定删除" id="delete" /></td><td></td></tr></table></div>
+    <div id="getback2" class="text-danger"></div>
+</div>
+

@@ -1,0 +1,57 @@
+﻿@using MovieWeb.Models
+@model Complaint
+@{
+    ViewBag.Title = "用户反馈";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style type="text/css">
+    #center {
+        width: 1000px;
+        height: 1000px;
+        margin: 0 auto;
+        padding-left: 150px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .normal_mess {
+        text-align: center;
+        width: 100px;
+        text-align: left;
+        border: 1px solid #ffffff
+    }
+
+    .comp_text {
+        text-align: center;
+        width: 600px;
+        height: 50px;
+        border: 1px solid #ffffff
+    }
+</style>
+
+<div id="center">
+    <h2>查看反馈</h2>
+    <form>
+        <table>
+            <tr>
+                <td class="normal_mess">用户ID</td>
+                <td class="normal_mess">反馈时间</td>
+                <td class="comp_text">反馈内容</td>
+                <td class="normal_mess">是否回复</td>
+                <td class="normal_mess">功能</td>
+            </tr>
+            @for (int i = 0; i < Model.Complaints.Count; ++i)
+            {
+            <tr>
+                <td class="normal_mess">@Model.Complaints[i].UID</td>
+                <td class="normal_mess">@Model.Complaints[i].ComplaintTime</td>
+                <td class="comp_text">@Model.Complaints[i].ComplaintText</td>
+                <td class="normal_mess">0</td>
+                <td class="normal_mess"><a href="@Url.Content("~/SendMessage/Index")"><u>回复</u></a></td>
+            </tr>
+            }
+        </table>
+    </form>
+</div>

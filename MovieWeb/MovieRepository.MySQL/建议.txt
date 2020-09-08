@@ -1,0 +1,12 @@
+﻿
+
+完成数据库操作
+
+三个类库创建的类必须前置public，否则肯定报错
+
+按大功能区分(如登录注册为一个大功能)，创建不同的cs文件
+
+引用关系为 MovieRepository.MySQL引用MySQL.Data
+		   MovieRepository.MySQL引用MovieModel
+		   MovieBusinessLogic引用MovieRepository.MySQL和MovieModel
+		   MovieWeb引用MovieBusinessLogic和MovieModel和MovieRepository.MySQL(以防万一，全部引用，实际上引用第一个应该就足够)

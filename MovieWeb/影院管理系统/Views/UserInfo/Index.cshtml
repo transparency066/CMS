@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script type="text/javascript">
+    function insert() {
+        alert("123");
+    }
+</script>
+<style type="text/css">
+    #useradmin_jumbotron{background-color:transparent;}
+    #rowchangecwb{margin-left:30px;margin-right:30px;}
+</style>
+
+<div class="jumbotron" id="useradmin_jumbotron">
+    <h1>用户管理主页</h1>
+    <p class="lead">欢迎来到用户管理主页，在这里你可以添加删除查找或者修改用户的信息!</p>
+    <p>
+    @*<a href="UAllinf" class="btn btn-primary btn-lg">查看所有用户 &raquo;</a>*@
+    @Html.ActionLink("查看所有用户","UAllinf",null,new {@class= "btn btn-primary btn-lg" })
+    </p>
+</div>
+
+<div class="row" id="rowchangecwb">
+    <div class="col-md-4">
+        <h2>添加用户账号信息</h2>
+        <p>
+           当用户注册出现问题或出现其他情况需要管理员来人工添加新的用户账号信息时，在这里可以添加一个新用户的账号信息，
+        </p>
+        <p>
+            @Html.ActionLink("添加用户", "Insert", null, new { @class = "btn btn-default" })
+            @*<a class="btn btn-default" href="Insert">添加用户 &raquo;</a>*@
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>删除用户账号信息</h2>
+        <p>当某些用户进行违规操作，小号恶意注册，或者账号存在异常或违法信息时，管理员在这里可以删除一个用户的账号信息。注意删除账号之后该账号在本网站上的所有相关记录都会被消除。</p>
+        <p>
+            @Html.ActionLink("删除用户", "Delete", null, new { @class = "btn btn-default" })
+            @*<a class="btn btn-default" href="Delete">删除用户 &raquo;</a>*@
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>查看/修改用户账号信息</h2>
+        <p>管理员在这里可以查看用户账号的信息，查看之后也可以修改用户的信息</p>
+        <p>
+            @Html.ActionLink("查看修改用户", "Update", null, new { @class = "btn btn-default" })
+            @*<a class="btn btn-default" href="Update">查看修改用户 &raquo;</a>*@
+        </p>
+    </div>
+</div>
