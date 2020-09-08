@@ -63,7 +63,7 @@ namespace MovieWeb.Controllers
 
         //收藏夹删除影片
         [HttpPost]
-        public ActionResult Index(string DeleteWishId)
+        public ActionResult Delete(string DeleteWishId)
         {
             Session.Remove("ReturnToWishList");
             string uid = Session["uid"].ToString();
@@ -86,7 +86,7 @@ namespace MovieWeb.Controllers
                 uid = uid,
                 wishLists = wish_list,
             };
-            return View(resView);
+            return PartialView("WishListPart1",resView);
         }
     }
 }
