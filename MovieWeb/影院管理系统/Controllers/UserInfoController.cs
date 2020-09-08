@@ -47,10 +47,10 @@ namespace MovieWeb.Controllers
                 else sex = 0;
                 MovieModel.Account userinf = new MovieModel.Account()
                 {
-                    UserName = Request.QueryString["MovieModel.Account"],
-                    PassWord = Request.QueryString["PassWord"],
+                    UserName = Request.QueryString["Account"],
+                    PassWord = Request.QueryString["Password"],
                     Name = Request.QueryString["Name"],
-                    PhoneNumber = Request.QueryString["PhoneNumber"],
+                    PhoneNumber = Request.QueryString["Phone"],
                     Sex = sex
                 };
                 int flag;
@@ -69,7 +69,7 @@ namespace MovieWeb.Controllers
         {
             MovieModel.Account userinf = new MovieModel.Account()
             {
-                UserName = Request.QueryString["MovieModel.Account"]
+                UserName = Request.QueryString["Account"]
             };
             MovieModel.Account userinf1 = admin.SearchUser(userinf.UserName);
             return Json(userinf1, JsonRequestBehavior.AllowGet);
@@ -81,7 +81,7 @@ namespace MovieWeb.Controllers
         {
             MovieModel.Account userinf = new MovieModel.Account()
             {
-                UserName = Request.QueryString["MovieModel.Account"]
+                UserName = Request.QueryString["Account"]
             };
             int flag = admin.DeleteUser(userinf.UserName);
             return Json(flag, JsonRequestBehavior.AllowGet);
@@ -95,10 +95,10 @@ namespace MovieWeb.Controllers
             else sex = 0;
             MovieModel.Account userinf = new MovieModel.Account()
             {
-                UserName = Request.QueryString["MovieModel.Account"],
-                PassWord = Request.QueryString["PassWord"],
+                UserName = Request.QueryString["Account"],
+                PassWord = Request.QueryString["Password"],
                 Name = Request.QueryString["Name"],
-                PhoneNumber = Request.QueryString["PhoneNumber"],
+                PhoneNumber = Request.QueryString["Phone"],
                 Sex = sex
             };
             string currentacc = Request.QueryString["current"];
