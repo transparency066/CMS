@@ -1,0 +1,120 @@
+﻿@using MovieWeb.Models
+@model WishList
+@{
+    ViewBag.Title = "收藏夹";
+}
+
+<style>
+    body {
+        background-color: #080b12;
+    }
+
+    #wish_list {
+        margin-top: 30px;
+        border-radius: 8px;
+    }
+
+    .wish-item {
+        display: flex;
+        background-image: linear-gradient(to right,#8e9eab,#d7d2cc);
+        height: 200px;
+        border-bottom: 1px solid black;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+
+        .wish-item:last-child {
+            border-bottom: 0;
+        }
+
+    .wish-movie-img {
+        width: 160px;
+        position: relative;
+    }
+
+        .wish-movie-img img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #f7f7f7;
+        }
+
+    .movie-img {
+        width: 100%;
+        position: relative;
+        display: block;
+    }
+
+    .wish-text {
+        margin-left: 20px;
+        width: 100%;
+        position: relative;
+    }
+
+        .wish-text h3 {
+            font-weight: 700;
+            line-height: 24px;
+            color: black;
+            text-align: left;
+            margin: 15px 0;
+        }
+
+        .wish-text h4 {
+            color: #2b2f4c;
+            font-weight: 400;
+            line-height: 24px;
+            text-align: left;
+            margin: 5px 0 10px 0;
+        }
+
+        .wish-text span {
+            float: left;
+            color: #2b2f4c;
+            font-weight: 400;
+            line-height: 24px;
+            text-align: left;
+            margin: 5px 0 10px 0;
+        }
+
+    .wish-delete-btn {
+        position: absolute;
+        top: 2px;
+        right: 0;
+        background: transparent;
+        border: 0;
+        font-size: 25px;
+        color: #2b2f4c;
+    }
+
+        .wish-delete-btn:hover {
+            color: dodgerblue;
+        }
+
+    .wish-item-detail {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        font-size: 14px;
+        width: 80%;
+        height: 48px;
+        line-height: 24px;
+        color: #2b2f4c;
+        text-align: left;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div>
+    <div class="container">
+        <div class="col-lg-12 col-md-12">
+            <h2>收藏夹</h2>
+            <div id="wish_list">
+                <div id="show_wish_list">
+                    @{ 
+                        Html.RenderPartial("WishListPart1", Model);
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

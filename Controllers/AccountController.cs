@@ -29,7 +29,9 @@ namespace MovieWeb.Controllers
             else if(LoginCode == 1)//用户登录成功
             {
                 Session["uid"] = account.UserName;
-                return RedirectToAction("Index", "Home");
+                if (Session["ReturnToWishList"] != null) return Redirect("/WishList");
+                else if (Session["ReturnToM2UInfo"] != null) return Redirect("/M2UInfo");
+                else return RedirectToAction("Index", "Home");
             }
             else//管理员登录成功
             {
@@ -56,7 +58,9 @@ namespace MovieWeb.Controllers
             else
             {
                 Session["uid"] = account.UserName;
-                return RedirectToAction("Index", "Home");
+                if (Session["ReturnToWishList"] != null) return Redirect("/WishList");
+                else if (Session["ReturnToM2UInfo"] != null) return Redirect("/M2UInfo");
+                else return RedirectToAction("Index", "Home");
             }
         }
 

@@ -1,11 +1,11 @@
-﻿
+
 @{
     var controller = ViewContext.RouteData.Values["controller"].ToString().ToLower();
     var action = ViewContext.RouteData.Values["action"].ToString().ToLower();
 
     string[] lController = new string[] { "screening", "seatslist" };
     string[] Accout = new string[] { "modify","create","hall" };
-    //   string[] lAction = new string[] { "index", "edit", "create" };
+    string[] user = new string[] { "home", "m2uinfo", "wishlist" };
 
     if (lController.Contains(controller))
     {
@@ -15,8 +15,11 @@
     {
         Layout = "~/Views/Shared/_OperationLayout.cshtml";
     }
+    else if (user.Contains(controller))
+    {
+        Layout = "~/Views/Shared/_UserLayout.cshtml";
+    }
     else
     { Layout = "~/Views/Shared/_Layout.cshtml"; }
-
 
 }
