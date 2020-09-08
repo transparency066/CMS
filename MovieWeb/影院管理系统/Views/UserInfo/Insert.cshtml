@@ -61,13 +61,13 @@
                     "Phone": phone,
                     "Sex": sex
                 };
-                $.get('@Url.Action("SendNewUser","UserAdmin")', results)
+                $.get('@Url.Action("SendNewUser", "UserInfo")', results)
                     .done(function (data) {
                         if (data.flag == 1) {
                             alert("添加用户信息成功!");
-                            var result = "<br>成功添加新用户：" + data.Name + "<br>该用户的账号：" + data.Account
-                                + "<br>该用户的密码：" + data.Password
-                                + "<br>该用户的电话：" + data.Phone
+                            var result = "<br>成功添加新用户：" + data.Name + "<br>该用户的账号：" + data.UserName
+                                + "<br>该用户的密码：" + data.PassWord
+                                + "<br>该用户的电话：" + data.PhoneNumber
                                 + "<br>该用户的性别(1是男，0是女）：" + data.Sex;
                         }
                         else {
