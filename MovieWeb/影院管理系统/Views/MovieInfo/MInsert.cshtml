@@ -87,7 +87,7 @@
                     "introduction": introduction,
                     "url": url
                 };
-                $.get('@Url.Action("SendNewMovie","MovieAdmin")', results)
+                $.get('@Url.Action("SendNewMovie", "MovieInfo")', results)
                     .done(function (data) {
                         if (data.flag == 1) {
                             alert("添加影片信息成功!");
