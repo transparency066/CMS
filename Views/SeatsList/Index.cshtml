@@ -1,0 +1,34 @@
+﻿@using Screening.Models
+@model SeatsListModel
+@{
+    ViewBag.Title = "Index";
+}
+<div class="am-u-sm-12">
+    <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
+        <thead>
+            <tr>
+                <th>场次ID</th>
+                <th>排</th>
+                <th>列</th>
+                <th>是否可用</th>
+                <th>是否被占用</th>
+            </tr>
+        </thead>
+        <tbody id="datas">
+            @if (Model.SeatsList.Count > 0)
+            {
+                foreach (var i in Model.SeatsList)
+                {
+            <tr>
+                <td>@i.screening_id</td>
+                <td>@i.x</td>
+                <td>@i.y</td>
+                <td>@i.available</td>
+                <td>@i.used</td>
+            </tr>
+                }
+            }
+            <!-- more data -->
+        </tbody>
+    </table>
+</div>

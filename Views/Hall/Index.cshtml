@@ -1,0 +1,83 @@
+﻿@using Screening.Models
+@model HallDataModel
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="tpl-content-wrapper">
+
+
+<div class="row-content am-cf">
+
+
+    <div class="row">
+
+        <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+            <div class="widget am-cf">
+                <div class="widget-head am-cf">
+                    <div class="widget-title am-fl">放映厅详情</div>
+                    <div class="widget-function am-fr">
+                        <a href="javascript:;" class="am-icon-cog"></a>
+                    </div>
+                </div>
+                <div class="widget-body am-fr">
+
+
+
+                    @using (Html.BeginForm("Modified", "Modify", FormMethod.Post, new { @class = "am-form tpl-form-line-form" }))
+                    {
+                        <div class="am-form-group">
+                            <label for="user-phone" class="am-u-sm-3 am-form-label">
+                                场次ID
+                                <span class="tpl-form-line-small-title">Block</span>
+                            </label>
+                            <div class="am-u-sm-9">
+                                @Html.TextBoxFor(now => now.screening_id, new { Value = Model.screening_id, @readonly = "readonly" })
+                                <small> </small>
+
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label for="user-name" class="am-u-sm-3 am-form-label">
+                                影片ID
+                                <span class="tpl-form-line-small-title">Cate</span>
+                            </label>
+                            <div class="am-u-sm-9">
+                                @Html.TextBoxFor(now => now.hall_id, new { Value = Model.hall_id, @readonly = "readonly" })
+
+                                <small> </small>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label for="user-intro" class="am-u-sm-3 am-form-label">大厅ID</label>
+                            <div class="am-u-sm-9">
+                                @Html.TextBoxFor(now => now.total, new { Value = Model.total, @readonly = "readonly" })
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label for="user-intro" class="am-u-sm-3 am-form-label">放映时间</label>
+                            <div class="am-u-sm-9">
+                                @Html.TextBoxFor(now => now.left, new { Value = Model.left, @readonly = "readonly" })
+                            </div>
+                        </div>
+
+ 
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+
+
+

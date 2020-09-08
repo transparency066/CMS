@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -163,27 +163,9 @@
         <p class="col-md-12"><a href="/Home/Index">夏洛特烦恼</a></p>
         <h5 class="col-md-12">年度魔性黑马喜剧</h5>
     </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
 </div>
-<script>
-    $('.owl-carousel').owlCarousel({
-        center:true,
-        items: 3,
-        loop: true,
-        margin: 10,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true
-    })
-
-    function showSmall(index) {
-        $(".title-text").eq(index).css("font-size", parseInt($(".title-text").eq(index).css("font-size")) + 4 + "px");
-        $(".title-text").eq(index).css("color", "rgb(237,75,53)");
-        $(".small-text").eq(index).show();
-        $("button.owl-dot").eq(index).click();
-    }
-    function hideSmall(index) {
-        $(".title-text").eq(index).css("font-size", parseInt($(".title-text").eq(index).css("font-size")) - 4 + "px");
-        $(".title-text").eq(index).css("color", "rgb(255,255,255)");
-        $(".small-text").eq(index).hide();
-    }
-</script>

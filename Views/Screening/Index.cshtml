@@ -1,0 +1,51 @@
+﻿@using Screening.Models
+@model ScreeningList
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="am-u-sm-12">
+    <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
+        <thead>
+            <tr>
+                <th>场次ID</th>
+                <th>影片ID</th>
+                <th>放映时间</th>
+                <th>放映厅ID</th>
+                <th>座位详情</th>
+                <th>操作</th>
+
+            </tr>
+        </thead>
+        <tbody id="datas">
+            @if (Model.ScreeningDataList.Count > 0)
+            {
+                foreach (var i in Model.ScreeningDataList)
+                {
+            <tr>
+                <td>@i.screening_id</td>
+                <td>@i.film_id</td>
+                <td>@i.start_time</td>
+                <td><a href="@Url.Content("~/Hall/Index/"+i.screening_id)"> @i.hall_id</a></td>
+                <td><a href="@Url.Content("~/SeatsList/Index/"+i.screening_id)"> 查看座位详情</a></td>
+                <td>
+                    @using (Html.BeginForm("Index", "Screening", FormMethod.Post))
+                    {
+                        <input type="hidden" value=@i.screening_id name="screening_id" />
+                        <button type="submit" class="cart-close-btn">删除</button>
+                    }
+                </td>
+                <td>
+
+                    <a href="@Url.Content("~/Modify/Index/"+i.screening_id)">
+                        <input type="button" value="修改" name="screening_id" />
+                    </a>
+                </td>
+            </tr>
+                }
+            }
+            <!-- more data -->
+        </tbody>
+    </table>
+</div>
