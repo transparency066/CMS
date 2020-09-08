@@ -39,7 +39,7 @@
             alert("test");
             var account = currentacc;
             var result = { "Account": account };
-            $.get('@Url.Action("DeletetheUser", "UserAdmin")', result)
+            $.get('@Url.Action("DeletetheUser", "UserInfo")', result)
                 .done(function (data)
                 {
                     if (data == 2) {
@@ -51,7 +51,7 @@
                 })
                 .fail(function (data)
                 {
-                    alert("删除用户信息失败!");
+                    alert("删除用户信息失败..!");
                 })
 
             
@@ -61,14 +61,14 @@
             var account = $("#account").val();
             var result = { "Account": account };
             currentacc = account;
-            $.get('@Url.Action("SearchtheUser", "UserAdmin")',result)
+            $.get('@Url.Action("SearchtheUser", "UserInfo")',result)
                 .done(function (data)
                 {
                     if (data.flag == 1) {
                         alert("查找用户信息成功!");
-                        var result = "<br>成功查找到用户：" + data.Name + "<br>该用户的账号：" + data.Account
-                            + "<br>该用户的密码：" + data.Password
-                            + "<br>该用户的电话：" + data.Phone
+                        var result = "<br>成功查找到用户：" + data.Name + "<br>该用户的账号：" + data.UserName
+                            + "<br>该用户的密码：" + data.PassWord
+                            + "<br>该用户的电话：" + data.PhoneNumber
                             + "<br>该用户的性别(1是男，0是女）：" + data.Sex;
                             //+ '<table><tr><td><input type="button" class="btn-danger" value="确定删除" id="delect" /></td><td></td></tr></table>';
                         $("#getback").html(result);
@@ -85,7 +85,7 @@
                 })
                 .fail(function (data)
                 {
-                    alert("查找用户信息失败!");
+                    alert("查找用户信息失败!..");
                 })
         });
 

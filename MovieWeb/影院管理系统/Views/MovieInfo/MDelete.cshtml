@@ -40,7 +40,7 @@
             //alert("test");
             var id = currentid;
             var result = { "id": id };
-            $.get('@Url.Action("DeletetheMovie", "MovieAdmin")', result)
+            $.get('@Url.Action("DeletetheMovie", "MovieInfo")', result)
                 .done(function (data)
                 {
                     if (data == 1) {
@@ -62,7 +62,7 @@
             var id = $("#id").val();
             var result = { "id": id };
             currentid = id;
-            $.get('@Url.Action("SearchtheMovie", "MovieAdmin")',result)
+            $.get('@Url.Action("SearchtheMovie", "MovieInfo")',result)
                 .done(function (data)
                 {
                     if (data.flag == 1) {
