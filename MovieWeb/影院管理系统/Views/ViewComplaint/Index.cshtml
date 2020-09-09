@@ -2,7 +2,6 @@
 @model Complaint
 @{
     ViewBag.Title = "用户反馈";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <style type="text/css">
     #center {
@@ -48,7 +47,7 @@
                 <td class="normal_mess">@Model.Complaints[i].UID</td>
                 <td class="normal_mess">@Model.Complaints[i].ComplaintTime</td>
                 <td class="comp_text">@Model.Complaints[i].ComplaintText</td>
-                <td class="normal_mess">0</td>
+                <td class="normal_mess">@Model.Complaints[i].ReplyFlag</td>
                 <td class="normal_mess"><a href="@Url.Content("~/SendMessage/Index")"><u>回复</u></a></td>
             </tr>
             }

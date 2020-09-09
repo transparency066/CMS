@@ -43,11 +43,35 @@
                             <li><a href="gallery-video-boxed.html">票房收入</a></li>
                             <li>@Html.ActionLink("用户反馈", "Index", "ViewComplaint")</li>
                         </ul>
-                        <div class="search-block">
-                            <form>
-                                <input type="search" placeholder="Search">
-                            </form>
+                        <div class="col-md-3 user-login">
+                            <!--登录信息-->
+                            @if (Session["uid"] == null)
+                            {
+                                <a href="~/Account/Login">
+                                    <img src="~/img/user-header.JPG" style="width:40px;height:40px" />
+                                </a>
+                                <div class="col-md-8">
+                                    <h4>
+                                        请 @Html.ActionLink("登录", "Login", "Account", null, new { @class = "link" })
+                                    </h4>
+                                </div>
+                            }
+                            else
+                            {
+                                <img src="~/img/user-header.JPG" style="width:40px;height:40px" />
+                                <div class="col-md-10">
+                                    <h4>
+                                        欢迎登录,@Session["uid"]
+                                        @Html.ActionLink("退出", "Cancel", "Home", null, new { @class = "link", @style = "font-size:12px" })
+                                    </h4>
+                                </div>
+                            }
                         </div>
+                        @*<div class="search-block">
+            <form>
+                <input type="search" placeholder="Search">
+            </form>
+        </div>*@
                     </div>
                     <!-- /.nav-collapse -->
                 </nav>

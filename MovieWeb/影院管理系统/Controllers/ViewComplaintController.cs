@@ -16,11 +16,12 @@ namespace MovieWeb.Controllers
         public ActionResult Index()
         {
             Admin admin = new Admin();
-            var complaint_list = admin.UserComplaint().Select(complaint=>new MovieWeb.Models.Complaint()
+            var complaint_list = admin.UserComplaint().Select(complaint => new MovieWeb.Models.Complaint()
             {
-                UID=complaint.UID,
-                ComplaintText=complaint.ComplaintText,
-                ComplaintTime=complaint.ComplaintTime
+                UID = complaint.UID,
+                ComplaintText = complaint.ComplaintText,
+                ComplaintTime = complaint.ComplaintTime,
+                ReplyFlag = complaint.ReplyFlag
             }).ToList();
             var compView = new MovieWeb.Models.Complaint()
             {

@@ -116,7 +116,8 @@ namespace MovieRepository.MySQL
                     {
                         UID = reader["账号ID"].ToString(),
                         ComplaintTime = DateTime.Parse(reader["反馈时间"].ToString()),
-                        ComplaintText = reader["账号ID"].ToString(),
+                        ComplaintText = reader["反馈内容"].ToString(),
+                        ReplyFlag = (int)reader["是否回复"]
                     });
 
                 }

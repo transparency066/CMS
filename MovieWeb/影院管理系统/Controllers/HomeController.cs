@@ -12,5 +12,12 @@ namespace MovieWeb.Controllers
         {
             return View();
         }
+
+        public ActionResult Cancel()
+        {
+            Session["uid"] = null;
+            return RedirectToAction("Index");
+        }
     }
+
 }

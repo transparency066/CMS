@@ -5,7 +5,7 @@
 
     string[] lController = new string[] { "screening", "seatslist" };
     string[] Accout = new string[] { "modify","create","hall" };
-    string[] user = new string[] { "home", "viewmessage", "wishlist" };
+    string[] user = new string[] { "home", "viewmessage", "wishlist","moviecomment","submitcomplaint" };
 
     if (lController.Contains(controller))
     {
@@ -20,5 +20,5 @@
         Layout = "~/Views/Shared/_UserLayout.cshtml";
     }
     else
-    { Layout = "~/Views/Shared/_Layout.cshtml"; }
+    { Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 }
