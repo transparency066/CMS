@@ -64,7 +64,7 @@ namespace MovieWeb.Controllers
             {
                 ViewBag.complainCode = 0;
             }
-            return Index();
+            return RedirectToAction("Index");
             //}
         }
     }
