@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,6 +75,27 @@ namespace MovieBusinessLogic
         public List<Message> getMessages(string uid)
         {
             return message.GetMessages(uid);
+        }
+
+        //查看信息
+        private FilmRp film = new FilmRp();
+
+        //搜索影片功能
+        public DataRowCollection QueryFilm(string key)
+        {
+            return film.queryFilms(key);
+        }
+        public Boolean Rate(String id, String s,String uid)
+        {
+            return film.rate(id, s, uid);
+        }
+        public String getMark(String id)
+        {
+            return film.queryScoreById(id);
+        }
+        public DataRow getFilmById(String id)
+        {
+            return film.queryFilmById(id);
         }
     }
 }

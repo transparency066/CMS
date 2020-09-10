@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "用户评论";
+}
+<link rel="stylesheet" href="~/Content/layui"></link>
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<body>
+    欢迎回来，管理员 @ViewBag.admin
+    <table class="layui-table">
+        <colgroup>
+            <col span="1" style="width: 8%;">
+            <col span="1" style="width: 16%;">
+            <col span="1" style="width: 14%;">
+            <col span="2" style="width: 52%;">
+            <col span="2" style="width: 12%;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>影票ID</th>
+                <th>账号ID</th>
+                <th>评论时间</th>
+                <th>评论内容</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach(System.Data.DataRow film in  @ViewBag.data){
+            <tr>
+                <td>@film["影票ID1"]</td>
+                <td>@film["账号ID1"]</td>
+                <th>@film["评论时间"]</th>
+                <td>@film["评论内容"]</td>
+                <td>
+                    <a href='delComment?pid=@film["影票ID1"]&id=@film["账号ID1"]'>删除</a>
+                </td>
+            </tr>
+            }
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

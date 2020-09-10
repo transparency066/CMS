@@ -13,6 +13,14 @@ namespace MovieRepository.MySQL
     {
         private string connectionString = "server=localhost;database=moviedb;username=root;pwd=123";
 
+        private MySqlConnection getConnect()
+        {
+            String connetStr = "server=localhost;port=3306;user=root;password=123; database=moviedb;SslMode=none;";
+            MySqlConnection conn = new MySqlConnection(connetStr);
+            conn.Open();
+            return conn;
+        }
+
         //获取所有评论
         public List<Comment> GetComments(string mid)
         {
@@ -101,6 +109,28 @@ namespace MovieRepository.MySQL
                 }
                 return success;
             }
+        }
+
+        //删除评论
+        public Boolean DelComment(String pid, String id)
+        {
+                MySqlConnection conn = getConnect();
+                try
+                {
+                    MySqlCommand mycom = conn.CreateCommand();
+                    if (id == null || pid == null) return false;
+                    mycom.CommandText = $"delete from 评论记录 where 账号ID1='{id}' and 影票ID1 = '{pid}' ";
+                    mycom.ExecuteNonQuery();
+                }
+                catch (MySqlException ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return true;
         }
     }
 }

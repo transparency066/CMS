@@ -121,7 +121,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\MovieCommentController.cs" />
+    <Compile Include="Controllers\TicketsTableController.cs" />
     <Compile Include="Controllers\ViewMessageController.cs" />
     <Compile Include="Controllers\SendMessageController.cs" />
     <Compile Include="Controllers\MovieInfoController.cs" />
@@ -153,6 +156,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\ie.css" />
+    <Content Include="Content\layui.css" />
     <Content Include="Content\lity.css" />
     <Content Include="Content\mjx_package\fontawesome-free\css\all.min.css" />
     <Content Include="Content\mjx_package\fontawesome-free\webfonts\fa-brands-400.svg" />
@@ -436,6 +440,11 @@
     <Content Include="Views\WishList\Index.cshtml" />
     <Content Include="Views\WishList\WishListPart1.cshtml" />
     <Content Include="Views\MovieComment\Index.cshtml" />
+    <Content Include="Views\Comment\comments.cshtml" />
+    <Content Include="Views\TicketsTable\TicketTable.cshtml" />
+    <Content Include="Views\Film\Index.cshtml" />
+    <Content Include="Views\Film\Search.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

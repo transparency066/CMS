@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MySql.Data.MySqlClient;
 
 namespace MovieWeb.Controllers
 {
@@ -18,6 +20,7 @@ namespace MovieWeb.Controllers
             Session["uid"] = null;
             return RedirectToAction("Index");
         }
+
     }
 
 }

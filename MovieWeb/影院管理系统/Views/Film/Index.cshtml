@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Detail Page";
+}
+<script src="~/bundles/jquery"></script>
+<style>
+a:link { color: #37a; text-decoration: none; }
+a:visited { color: #669; text-decoration: none; }
+a:hover { color: #fff; text-decoration: none; background: #37a; }
+a:active { color: #fff; text-decoration: none; background: #f93; }
+a img { border-width:0;vertical-align:middle; }
+textarea { resize: none }
+textarea:focus { outline:none; }
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden }
+.clearfix { zoom: 1; display: inline-block; _height: 1px }
+.clearfix { display: block }
+.clearfloat { display: inline-block; *display:inline; *zoom:1; }
+#wrapper { width: 950px; margin: 0 auto }
+#content { min-height: 420px  }
+fieldset { border: 1px solid #ddd; padding: 0 10px; margin-bottom: 15px }
+fieldset legend { color: #666; padding: 0 5px }
+input { margin-right: 3px; vertical-align: middle  }
+label { font-family: Tahoma; vertical-align: middle }
+
+</style>
+<div id="wrapper">
+	<div id="content">
+	<div id="dale_movie_subject_top_icon" ad-status="loaded"></div>
+	<h1>
+		<span property="v:itemreviewed">影片名称 @ViewBag.Data["名字"]</span>
+			<span class="year">(@ViewBag.Data["影片ID"])</span>
+	</h1>
+    <div class="grid-16-8 clearfix">
+        <div class="article">
+    <div class="indent clearfix">
+		<div id="mainpic" class="">
+				<img src="/imgs/bigpic.png" rel="v:image">
+		</div>
+	<div id="info">
+		<span class="pl">类型:</span> @ViewBag.Data["类型"]<br>
+		<span class="pl">上映日期:</span> @ViewBag.Data["上映日期"]<br>
+		<span class="pl">片长:</span> <span property="v:runtime" content="142">@ViewBag.Data["时长"]</span><br>
+	</div>
+</div>
+
+<div id="interest_sect_level" class="clearfix">
+    <div class="ll j a_stars">
+    评价: @ViewBag.mark
+		<div id="stars" >
+	@for(int i=1;i<=10;i++){
+		if(i<=@ViewBag.mark){
+            <a href="/film/rate?s=@i&id=@ViewBag.Data["影片ID"]" class="j a_show_login" name="pbtn-1">
+				<img src="/imgs/star_onmouseover.png" id="star1" width="16" height="16">
+			</a>
+		}else{
+            <a href="/film/rate?s=@i&id=@ViewBag.Data["影片ID"]" class="j a_show_login" name="pbtn-2">
+				<img src="/imgs/star_hollow_hover.png" id="star2" width="16" height="16">
+			</a>
+		}
+	}
+		</div>
+		<span id="rateword" class="pl"></span>
+        <a href="收藏URL?id=@ViewBag.Data["影片ID"]" rel="nofollow" class="j a_show_login colbutt ll" name="pbtn-1292720-collect">
+            <span> 收藏 </span>
+        </a>
+		</span>
+    </div>
+	<script>
+		$("#stars").on('mouseover mouseout', 'a', function(ev) {
+			　if(event.type == "mouseover"){
+					$(this).prevAll().children().each(function(){$(this).attr('src', '/imgs/star_onmouseover.png')});
+					$(this).children().first().attr('src', '/imgs/star_onmouseover.png');
+					$(this).nextAll().children().each(function(){$(this).attr('src', '/imgs/star_hollow_hover.png')})
+ 　　		   }else if(event.type == "mouseout"){
+ 　　		   };
+
+		})
+	</script>
+</div>

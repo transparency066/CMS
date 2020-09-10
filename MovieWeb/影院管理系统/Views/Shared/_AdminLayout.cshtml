@@ -40,13 +40,13 @@
                             <li><a href="single-page.html">场次管理</a></li>
                             <li><a href="single-page-with-img.html">放映厅管理</a></li>
                             <li><a href="login.html">座位管理</a></li>
-                            <li><a href="gallery-video-boxed.html">票房收入</a></li>
+                            <li>@Html.ActionLink("票房收入", "TicketTable", "TicketsTable")</li>
                             <li>@Html.ActionLink("用户反馈", "Index", "ViewComplaint")</li>
-                            <li><a href="gallery-video-boxed.html">处理影片评论</a></li>
+                            <li>@Html.ActionLink("影片评论", "comments", "Comment")</li>
                         </ul>
                         <div class="col-md-3 user-login">
                             <!--登录信息-->
-                            @if (Session["uid"] == null)
+                            @if (Session["aid"] == null)
                             {
                                 <a href="~/Account/Login">
                                     <img src="~/img/user-header.JPG" style="width:40px;height:40px" />
@@ -62,7 +62,7 @@
                                 <img src="~/img/user-header.JPG" style="width:40px;height:40px" />
                                 <div class="col-md-10">
                                     <h4>
-                                        欢迎登录,@Session["uid"]
+                                        欢迎登录,@Session["aid"]
                                         @Html.ActionLink("退出", "Cancel", "Home", null, new { @class = "link", @style = "font-size:12px" })
                                     </h4>
                                 </div>

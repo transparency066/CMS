@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="Mark.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Complaint.cs" />
     <Compile Include="Message.cs" />

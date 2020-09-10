@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -96,5 +97,25 @@ namespace MovieBusinessLogic
             int flag = reply.SendMessage(uid, complainTime, aid, replyTime, message);
             return flag;
         }
+
+        private MovieRepository.MySQL.MarkRp mark = new MovieRepository.MySQL.MarkRp();
+
+        //查询所有票据
+        public DataRowCollection queryTicket() {
+            return mark.queryTicket();
+        }
+
+        //查询评论记录
+        public DataRowCollection queryComments()
+        {
+            return mark.getComments();
+        }
+
+        //删除评论记录
+        public Boolean delComment(String pid, String id)
+        {
+            return mark.DelComment(pid,id);
+        }
+
     }
 }

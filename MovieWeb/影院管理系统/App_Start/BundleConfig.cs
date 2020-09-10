@@ -25,6 +25,8 @@ namespace MovieWeb
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/layui").Include(
+                      "~/Content/layui.css"));
 
             bundles.Add(new StyleBundle("~/Content/mjx_package/css").Include(
          "~/Content/mjx_package/fontawesome-free/css/all.min.css",
