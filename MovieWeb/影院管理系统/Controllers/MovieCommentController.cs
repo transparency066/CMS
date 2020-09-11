@@ -30,11 +30,10 @@ namespace MovieWeb.Controllers
         [HttpPost]
         public ActionResult Index(FormCollection txt)
         {
-            int commentCode = 0;
+            
             string content = txt["PostContent"];
             DateTime time = DateTime.Now;
-            string mid = System.Web.HttpContext.Current.Session["uid"].ToString();
-
+            string mid = System.Web.HttpContext.Current.Session["movieID"].ToString();
             if (Session["uid"] == null)
             {
                 return RedirectToAction("Login", "Account");
@@ -44,7 +43,7 @@ namespace MovieWeb.Controllers
                 string uid = System.Web.HttpContext.Current.Session["uid"].ToString();
                 if (user.PostComment(mid, uid, time, content) > 0)
                 {
-                    commentCode = 1;
+                    
                     ViewBag.commentCode = 1;
                 }
                 else

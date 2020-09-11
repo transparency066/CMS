@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Detail Page";
 }
-<script src="~/bundles/jquery"></script>
+
 <style>
 a:link { color: #37a; text-decoration: none; }
 a:visited { color: #669; text-decoration: none; }
@@ -22,6 +22,9 @@ input { margin-right: 3px; vertical-align: middle  }
 label { font-family: Tahoma; vertical-align: middle }
 
 </style>
+
+
+
 <div id="wrapper">
 	<div id="content">
 	<div id="dale_movie_subject_top_icon" ad-status="loaded"></div>
@@ -41,6 +44,8 @@ label { font-family: Tahoma; vertical-align: middle }
 		<span class="pl">片长:</span> <span property="v:runtime" content="142">@ViewBag.Data["时长"]</span><br>
 	</div>
 </div>
+
+<div>@Html.ActionLink("查看评论", "Index", "MovieComment")</div>
 
 <div id="interest_sect_level" class="clearfix">
     <div class="ll j a_stars">
