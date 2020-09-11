@@ -13,27 +13,28 @@
             document.getElementById('PostContent').value = document.getElementById('PostContent').value.substring(0, 200);
         }
     };
+  
 </script>
-<div class="status-upload">
-    <form method="post" action="/MovieComment/Index">
-        <textarea runat="server" placeholder="想说点什么..." oninput="cal();" type="text" name="PostContent"></textarea>
-        <div class="comment-box-control">
-            <span id="text_count"> 剩余可输入200字</span>
-            <button type="submit" class="btn pull-right">发表</button>
-        </div>
-    </form>
-    @if (ViewBag.commentCode == 1)
-    {
-        <p class="text-danger" style="font-size:16px; color:white;text-align:center;">发表成功</p>
-    }
-    @if (ViewBag.commentCode == 0)
-    {
-        <p class="text-danger" style="font-size:16px; color:white;text-align:center;">发表失败</p>
-    }
+    <div class="status-upload">
+        <form method="post" action="/MovieComment/Index">
+            <textarea runat="server" placeholder="想说点什么..." oninput="cal();" type="text"id="PostContent" name="PostContent"></textarea>
+            <div class="comment-box-control">
+                <span id="text_count"> 剩余可输入200字</span>            
+                <button type="submit" class="btn pull-right">发表</button>
+            </div>
+        </form>
+        @if (ViewBag.commentCode == 1)
+        {
+            <p class="text-danger" style="font-size:16px; color:white;text-align:center;">发表成功</p>
+        }
+        @if (ViewBag.commentCode == 0)
+        {
+            <p class="text-danger" style="font-size:16px; color:white;text-align:center;">发表失败</p>
+        }
 
-</div>
+    </div>
 
-@foreach (MovieModel.Comment i in Model)
+@foreach (MovieWeb.Models.Comment i in Model)
 {
         <div class="col-sm-1">
             <div class="thumbnail">
