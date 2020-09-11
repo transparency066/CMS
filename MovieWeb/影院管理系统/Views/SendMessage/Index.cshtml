@@ -43,14 +43,14 @@
                 alert("信息不能为空\n");
                 flag = 0;
             }
-            if (flag == 0) {
+            if (flag == 1) {
                 var currentDate = new Date();
                 var results = {
                     "ReplyTime": currentDate.toLocaleDateString(),
-                    "AdminID": AdminID,
-                    "ReplyMessage": mess
+                    "AdminID": $("#adminID").val(),
+                    "ReplyMessage":$("#reply").val()
                 };
-                $.get('@Url.Action("SendMess","MessageSend")', results)
+                $.get('@Url.Action("SendMess","SendMessage")', results)
                     .done(function (data) {
                         if (data.flag == 1) {
                             alert("信息发送成功!");

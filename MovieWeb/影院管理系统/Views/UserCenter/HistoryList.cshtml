@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "修改个人信息";
+    Layout = "/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .data-table{
+        width:100%;
+    }
+</style>
+
+
+<table cellpadding="0" cellspacing="0" class="data-table">
+    <thead>
+        <tr>
+            <th>影票ID</th>
+            <th>场次ID</th>
+            <th>购票时间</th>
+            <th>放映厅ID</th>
+            <th>放映厅位置</th>
+            <th>座位ID</th>
+            <th>行位置</th>
+            <th>列位置</th>
+            <th>影票状态</th>
+        </tr>
+    </thead>
+    @if ((List<MovieModel.Ticket>)ViewBag.List != null)
+    {
+        foreach (var item in (List<MovieModel.Ticket>)ViewBag.List)
+        {
+            <tr>
+                <td>@item.影票ID</td>
+                <td>@item.场次ID</td>
+                <td>@item.购票时间</td>
+                <td>@item.放映厅ID</td>
+                <td>@item.放映厅位置</td>
+                <td>@item.座位ID</td>
+                <td>@item.行位置</td>
+                <td>@item.列位置</td>
+                <td>@item.影票状态</td>
+            </tr>
+        }
+    }
+
+</table>

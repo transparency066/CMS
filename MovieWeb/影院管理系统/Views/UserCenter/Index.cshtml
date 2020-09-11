@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "修改个人信息";
+    Layout = "/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .row {
+        padding:10px 0;
+    }
+    .row .name {
+        float: left;
+        width: 10%;
+        line-height: 54px;
+    }
+    .row .field {
+        float: left;
+        width: 90%;
+    }
+        .row .rdoField {
+            padding:16px 0;
+        }
+        .row .field .rdo {
+            float: left;
+            width: 40px;
+        }
+        .row .field span {
+            float: left;
+            width: 60px;
+        }
+
+    .row.center{
+        text-align:center;
+    }
+    .btn-warning {
+        width: 30%;
+        display: inline-block;
+        float: none;
+    }
+    .btn-success {
+        width: 30%;
+        display: inline-block;
+        float:none;
+    }
+</style>
+
+<form class="form" action="/UserCenter/update">
+    <input type="hidden" name="账号ID" value="@Model.账号ID" />
+    <div class="row">
+        <div class="name">账号：</div>
+        <div class="field"><input type="text" name="账号IDShow" class="right1" id="newaccount" disabled value="@Model.账号ID" /></div>
+    </div>
+    <div class="row">
+        <div class="name">昵称：</div>
+        <div class="field"><input type="text" name="昵称" class="right1" id="newusername" value="@Model.昵称" /></div>
+    </div>
+    <div class="row">
+        <div class="name">电话：</div>
+        <div class="field"><input type="text" name="电话" class="right1" id="newphone" value="@Model.电话" /></div>
+    </div>
+    <div class="row">
+        <div class="name">性别：</div>
+        <div class="field rdoField">
+            @{ 
+                var sex1String = Model.性别 == 1 ? "checked" : "";
+                var sex2String = Model.性别 == 0 ? "checked" : "";
+            }
+            <input type="radio" class="rdo" name="性别" value="1" @sex1String />
+            <span>男</span>
+            <input type="radio" class="rdo" name="性别" value="0" @sex2String/>
+            <span>女</span>
+        </div>
+    </div>
+    <div class="row center">
+        <input type="submit" class="btn-success" value="提交信息" id="submitinf2" />
+        <input type="reset" class="btn-warning" value="重置信息" />
+    </div>
+</form>
