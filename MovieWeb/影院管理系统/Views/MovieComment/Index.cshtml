@@ -12,13 +12,13 @@
         else {
             document.getElementById('PostContent').value = document.getElementById('PostContent').value.substring(0, 200);
         }
-    };
+    }
+</script>
 <div class="status-upload">
     <div class="comment-box-control">
-        <button class="btn pull-right">< a href=" "Index","Film")?id=@Session["movieID"]">返回</ a></button>
+        <button class="btn btn-danger"><a href="@Url.Action("Index","Film")?id=@Session["movieID"]">返回</ a></button>
     </div>
 </div>
-</script>
     <div class="status-upload">
         <form method="post" action="/MovieComment/Index">
             <textarea runat="server" placeholder="想说点什么..." oninput="cal();" type="text"id="PostContent" name="PostContent"></textarea>
