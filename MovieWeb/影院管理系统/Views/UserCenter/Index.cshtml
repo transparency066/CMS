@@ -1,38 +1,54 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "修改个人信息";
     Layout = "/Views/Shared/_UserLayout.cshtml";
 }
 
 <style>
-    .row {
+    /*.row1 {
         padding:10px 0;
     }
-    .row .name {
+    .row1 .name {
         float: left;
         width: 10%;
         line-height: 54px;
     }
-    .row .field {
+    .row1 .field {
         float: left;
-        width: 90%;
     }
-        .row .rdoField {
+        .row1 .rdoField {
             padding:16px 0;
         }
-        .row .field .rdo {
+        .row1 .field .rdo {
             float: left;
             width: 40px;
         }
-        .row .field span {
+        .row1 .field span {
             float: left;
             width: 60px;
-        }
-
-    .row.center{
+        }*/
+    .rdo{
+        float:left;
+        width:40px
+    }
+    .form{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        margin-top:20px;
+    }
+    .name{
+        color:cyan;
+        font-size:20px;
+        font-weight:400;
+        line-height:20px;
+        display:inline-block;
+        padding:10px;
+    }
+    .center{
         text-align:center;
     }
-    .btn-warning {
+    /*.btn-warning {
         width: 30%;
         display: inline-block;
         float: none;
@@ -41,38 +57,97 @@
         width: 30%;
         display: inline-block;
         float:none;
+    }*/
+    .result{
+        text-align:center;
+    }
+    .result-text{
+        font-size:20px;
+        font-weight:400;
+        color:burlywood
+    }
+    .usercenter-title{
+        text-align:center;
+        margin:10px 0;
+    }
+    .title-text {
+        color: #ef4238;
+        font-size:32px;
+        font-weight:400;
+        line-height:32px;
+    }
+    .sex-radio{
+        float:left;
+        height:20px;
+        padding:10px;
+    }
+    .form-item{
+        margin:10px 0
+    }
+    .action-btn{
+        display:inline;
+    }
+    .btn-div{
+        margin:0 auto;
     }
 </style>
-
-<form class="form" action="/UserCenter/update">
-    <input type="hidden" name="账号ID" value="@Model.账号ID" />
-    <div class="row">
-        <div class="name">账号：</div>
-        <div class="field"><input type="text" name="账号IDShow" class="right1" id="newaccount" disabled value="@Model.账号ID" /></div>
-    </div>
-    <div class="row">
-        <div class="name">昵称：</div>
-        <div class="field"><input type="text" name="昵称" class="right1" id="newusername" value="@Model.昵称" /></div>
-    </div>
-    <div class="row">
-        <div class="name">电话：</div>
-        <div class="field"><input type="text" name="电话" class="right1" id="newphone" value="@Model.电话" /></div>
-    </div>
-    <div class="row">
-        <div class="name">性别：</div>
-        <div class="field rdoField">
-            @{ 
-                var sex1String = Model.性别 == 1 ? "checked" : "";
-                var sex2String = Model.性别 == 0 ? "checked" : "";
-            }
-            <input type="radio" class="rdo" name="性别" value="1" @sex1String />
-            <span>男</span>
-            <input type="radio" class="rdo" name="性别" value="0" @sex2String/>
-            <span>女</span>
+<div class="modify-div col-md-12">
+    <div class="usercenter-title col-md-12"><span class="title-text">个人信息</span></div>
+    <div class="form-div col-md-12">
+        <div class="form-index">
+            <form class="form" action="/UserCenter/update">
+                <input type="hidden" name="UserID" value="@Model.UserID" />
+                <div class="col-md-5 form-item">
+                    <div class="name col-md-3"><span>账号：</span></div>
+                    <div class="field col-md-9"><input type="text" name="账号IDShow" class="right1" id="newaccount" disabled value="@Model.UserID" /></div>
+                </div>
+                <div class="col-md-5 form-item">
+                    <div class="name col-md-3"><span>昵称：</span></div>
+                    <div class="field col-md-9"><input type="text" name="NickName" class="right1" id="newusername" value="@Model.NickName" /></div>
+                </div>
+                <div class="col-md-5 form-item">
+                    <div class="name col-md-3"><span>电话：</span></div>
+                    <div class="field col-md-9"><input type="text" name="Phone" class="right1" id="newphone" value="@Model.Phone" /></div>
+                    <div class="col-md-9 col-md-offset-3 text-danger" style="font-size:18px">
+                        @if (Session["UserCenterPhoneLength"] !=null)
+                        {
+                            <span>电话号码必须为11位</span>
+                            Session.Remove("UserCenterPhoneLength");
+                        }
+                    </div>
+                </div>
+                <div class="col-md-5 form-item">
+                    <div class="name col-md-3">性别：</div>
+                    <div class="field rdoField col-md-9">
+                        @{
+                            var sex1String = Model.Sex == 1 ? "checked" : "";
+                            var sex2String = Model.Sex == 0 ? "checked" : "";
+                        }
+                        <div class="sex-radio">
+                            <input type="radio" class="rdo" name="Sex" value="1" @sex1String />
+                            <span>男</span>
+                        </div>
+                        <div class="sex-radio">
+                            <input type="radio" class="rdo" name="Sex" value="0" @sex2String />
+                            <span>女</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 form-item">
+                    <div class="btn-div col-md-12">
+                        <input type="reset" class="btn-warning col-md-6" value="重置信息" />
+                        <input type="submit" class="btn-success col-md-6" value="提交信息" id="submitinf2" />
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="row center">
-        <input type="submit" class="btn-success" value="提交信息" id="submitinf2" />
-        <input type="reset" class="btn-warning" value="重置信息" />
-    </div>
-</form>
+</div>
+
+<div class="result col-md-12">
+    @if(Session["UserCenterResult"]!=null)
+    {
+        <span class="result-text text-danger">修改个人信息成功</span>
+        Session.Remove("UserCenterResult");
+    }
+</div>

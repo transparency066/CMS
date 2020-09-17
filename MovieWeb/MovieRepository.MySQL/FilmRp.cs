@@ -72,32 +72,91 @@ namespace MovieRepository.MySQL
         }
 
         //搜索影片
-        public DataRowCollection queryFilms(string key)
+        public List<SearchMovie> queryFilms(string key)
         {
             if (key == null) key = "1";
             String[] keys = key.Split(' ');
             MySqlConnection conn = getConnect();
-            try
+            var searchMovies = new List<SearchMovie>();
+            using (MySqlCommand cmd = new MySqlCommand())
             {
-                MySqlCommand mycom = conn.CreateCommand();
-                mycom.CommandText = $"SELECT * FROM 影片 where 名字 like '%{keys[0]}%'";
-                MySqlDataAdapter adap = new MySqlDataAdapter(mycom);
-                DataSet ds = new DataSet();
-                adap.Fill(ds);
-                return ds.Tables[0].Rows;
+                cmd.CommandText = "select 影片ID,名字,类型,图片url from 影片";
+                cmd.Connection = conn;
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader.GetString("名字").Contains(key))
+                    {
+                        var searchMovie = new SearchMovie()
+                        {
+                            ID = reader.GetString("影片ID"),
+                            Name = reader.GetString("名字"),
+                            Type = reader.GetString("类型"),
+                            Url = reader.GetString("图片url")
+                        };
+                        using (MySqlCommand _cmd = new MySqlCommand())
+                        {
+                            MySqlConnection _conn = getConnect();
+                            _cmd.Connection = _conn;
+                            ///有评分为空的情况无法判断
+                            _cmd.CommandText = "select 分数 from 影片 natural join 场次 natural join 影票 join 评分记录 using (影票ID) where 影片ID = @id";
+                            _cmd.Parameters.Add(new MySqlParameter("@id", searchMovie.ID));
+                            MySqlDataReader _reader = _cmd.ExecuteReader();
+                            float cnt = 0, sum = 0;
+                            if (!_reader.HasRows)
+                            {
+                                searchMovie.Score = -1;
+                                searchMovies.Add(searchMovie);
+                                continue;
+                            }
+                            else
+                            {
+                                while (_reader.Read())
+                                {
+                                    sum += _reader.GetFloat("分数");
+                                    cnt++;
+                                }
+                            }
+                            _reader.Close();
+                            sum = sum / cnt;
+                            searchMovie.Score = sum;
+                        }
+                        searchMovies.Add(searchMovie);
+                    }
+                }
+                reader.Close();
             }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return null;
+            return searchMovies;
         }
-        public Boolean rate(String id, String s,String userId)
+
+        public List<RankMovie> GetRankMovies()
+        {
+            MySqlConnection conn = getConnect();
+            var rankMovies = new List<RankMovie>();
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+                cmd.CommandText = "select 影片ID,名字,图片url,count(影片ID) as 销售量 from 影片 natural join 场次 join 影票 using (场次ID) group by 影片ID,名字,图片url order by 销售量 desc";
+                cmd.Connection = conn;
+                MySqlDataReader reader = cmd.ExecuteReader();
+                int cnt = 0;
+                while (reader.Read())
+                {
+                    rankMovies.Add(new RankMovie
+                    {
+                        ID = reader.GetString("影片ID"),
+                        Name = reader.GetString("名字"),
+                        Tickets = reader.GetInt32("销售量"),
+                        Url = reader.GetString("图片url")
+                    });
+                    cnt++;
+                    if (cnt == 10) break;
+                }
+                reader.Close();
+                return rankMovies;
+            }
+        }
+
+        public Boolean Rate(String id, String s, String userId)
         {
             int tmp = 0;
 
@@ -130,6 +189,42 @@ namespace MovieRepository.MySQL
                 }
             }
             return tmp > 0;
+        }
+
+        //寻找具有同等类型的电影
+        public List<RecommendMovie> GetRecommendMovies(string[] InitialType, string InitialId)
+        {
+            MySqlConnection conn = getConnect();
+            var recommendMovies = new List<RecommendMovie>();
+            string sql = "select * from 影片";
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+                cmd.CommandText = sql;
+                cmd.Connection = conn;
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (InitialId == reader.GetString("影片ID")) continue;
+                    if (recommendMovies.Count >= 4) break;
+                    string type = reader.GetString("类型");
+                    foreach (var i in InitialType)
+                    {
+                        if (type.Contains(i))
+                        {
+                            recommendMovies.Add(new RecommendMovie
+                            {
+                                ID = reader.GetString("影片ID"),
+                                Name = reader.GetString("名字"),
+                                Type = reader.GetString("类型"),
+                                Url = reader.GetString("图片url")
+                            });
+                            break;
+                        }
+                    }
+                }
+                reader.Close();
+                return recommendMovies;
+            }
         }
     }
 }

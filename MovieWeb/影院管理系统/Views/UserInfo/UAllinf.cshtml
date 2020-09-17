@@ -1,16 +1,105 @@
 ﻿@using MovieWeb.Models;
 @model AllUListViewModel
 @{
-    ViewBag.Title = "UAllinf";
+    ViewBag.Title = "查看所有用户";
 }
+<link rel="stylesheet" href="~/Content/layui"></link>
 
-
-<h2>所有用户的信息</h2>
-<h3>用户数量为 @Model.Count 位</h3>
-<ul>
-
-    @foreach (var post in Model.AllUs)
-    {
-        <li>账号ID: @post.UserName  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 昵称: @post.Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 性别: @post.Sex &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 电话: @post.PhoneNumber &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+<style>
+    .userinfo-title {
+        margin-top: 20px;
+        padding: 0;
+        border-radius: 2px;
+        height: 26px;
     }
-</ul>
+
+    .title-text {
+        font-size: 26px;
+        color: #ef4238;
+        line-height: 26px;
+        font-weight: 700;
+    }
+
+    .user-num-text {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 16px;
+        margin-top: 10px;
+        margin-left: 10px;
+        color: #666;
+    }
+
+    .user-number {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 20px;
+        margin-top: 6px;
+        margin-left: 6px;
+        margin-right: 6px;
+        color: #ffb400 !important;
+    }
+
+    .userinfo-list {
+        margin-top: 24px;
+    }
+
+    .center {
+        text-align: center;
+    }
+</style>
+
+<div class="col-md-12 userinfo-title">
+    <span class="title-text">所有用户信息</span>
+    <span class="user-num-text">用户数量为 <span class="user-number">@Model.Count </span>位</span>
+</div>
+<div class="col-md-12 userinfo-list">
+    <table class="layui-table">
+        <colgroup>
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 25%;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th><div class="col-md-12 center"><span>账号ID</span></div></th>
+                <th><div class="col-md-12 center"><span>昵称</span></div></th>
+                <th><div class="col-md-12 center"><span>性别</span></div></th>
+                <th><div class="col-md-12 center"><span>电话</span></div></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (var post in Model.AllUs)
+                {
+                <tr>
+                    <td><div class="col-md-12 center"><span>@post.UserName</span></div></td>
+                    <td><div class="col-md-12 center"><span>@post.Name</span></div></td>
+                    <th>
+                        <div class="col-md-12 center">
+                            <span>
+                                @if (post.Sex == 1)
+                                {
+                                    <span>男</span>
+                                }
+                                else
+                                {
+                                    <span>女</span>
+                                }
+                            </span>
+                        </div>
+                    </th>
+                    <td><div class="col-md-12 center"><span>@post.PhoneNumber</span></div></td>
+                </tr>
+            }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    @*<ul>
+
+            @foreach (var post in Model.AllUs)
+            {
+                <li>账号ID: @post.UserName  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 昵称: @post.Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 性别: @post.Sex &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 电话: @post.PhoneNumber &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+            }
+        </ul>*@

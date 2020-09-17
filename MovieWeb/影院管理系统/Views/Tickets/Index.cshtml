@@ -1,0 +1,41 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "电影列表";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+
+    List<MovieModel.Movie> list = MovieBusinessLogic.Movie.GetList("");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>电影列表</title>
+</head>
+<body>
+    <div class="container">
+        @if (list != null && list.Count > 0)
+        {
+            foreach (MovieModel.Movie mm in list)
+            {
+                <div class="row">
+                    <div class="col-lg-4">
+                        <img style="height: 322px;width:232px;" src="@mm.图片url" alt="@mm.名字">
+                    </div>
+
+                    <div class="col-lg-8">
+                        <h4>@mm.名字</h4>
+                        <h4>@mm.类型</h4>
+                        <h4>@mm.时长</h4>
+                        <h4>@mm.上映日期</h4>
+                        <h4>@mm.票价 元</h4>
+                        <p>@mm.简介</p>
+                        <a class="btn btn-danger" href="/Tickets/Round?id=@mm.影片ID">选座购票</a>
+                    </div>
+                </div>
+                <br /><hr /><br />
+            }
+        }
+    </div>
+</body>
+</html>

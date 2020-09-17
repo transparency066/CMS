@@ -1,4 +1,6 @@
-﻿@{
+﻿@using MovieWeb.Models
+@model Complaint
+@{
     ViewBag.Title = "SendMessage";
 }
 <style type="text/css">
@@ -25,7 +27,7 @@
     }
 
     .btn-success {
-        color : #ffffff
+        color: #ffffff
     }
 </style>
 
@@ -47,8 +49,10 @@
                 var currentDate = new Date();
                 var results = {
                     "ReplyTime": currentDate.toLocaleDateString(),
-                    "AdminID": $("#adminID").val(),
-                    "ReplyMessage":$("#reply").val()
+                    "AdminID": "@Session["aid"]",
+                    "ReplyMessage": $("#reply").val(),
+                    "UID":"@Model.UID",
+                    "ComplaintTime":"@Model.ComplaintTime"
                 };
                 $.get('@Url.Action("SendMess","SendMessage")', results)
                     .done(function (data) {

@@ -1,0 +1,210 @@
+﻿@{
+    ViewBag.Title = "订票";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+
+    MovieModel.Movie movie = Model as MovieModel.Movie;
+    if (movie == null)
+    {
+        movie = new MovieModel.Movie();
+    }
+    MovieModel.Hall ytModel = ViewBag.YTModel as MovieModel.Hall;
+    List<MovieModel.Seats> zwList = new List<MovieModel.Seats>();
+    List<MovieModel.Seats> gmList = new List<MovieModel.Seats>();//获得被占用的票
+    if (ytModel != null)
+    {
+        zwList = MovieBusinessLogic.Seats.GetList(" and 放映厅ID='" + ytModel.放映厅ID + "' order by 座位id asc ");
+
+        //获得被占用的票
+        gmList = MovieBusinessLogic.Seats.GetList(" and 放映厅ID='" + ytModel.放映厅ID + "' and 座位ID in (select 座位ID from 影票 where (影票状态=0 or 影票状态=1)) ");
+    }
+    else
+    {
+        ytModel = new MovieModel.Hall();
+    }
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>订票</title>
+    <link rel="stylesheet" type="text/css" href="/Content/reset.css" />
+    <style>
+
+        .btn {
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -ms-border-radius: 3px;
+            -o-border-radius: 3px;
+            border-radius: 3px;
+            background-color: #ff8400;
+            font-style: normal;
+            color: #fff;
+            display: inline-block;
+            text-align: center;
+            line-height: 2px;
+            width: 82px;
+            transition: background-color 0.2s linear 0s;
+            border: none;
+            cursor: pointer;
+        }
+
+            .btn:hover {
+                background-color: #e95a00;
+                text-decoration: none
+            }
+    </style>
+</head>
+<body>
+    <div class="demo clearfix">
+        <!---左边座位列表----->
+        <div id="seat_area">
+            <div class="front">屏幕</div>
+        </div>
+        <!---右边选座信息----->
+        <div class="booking_area">
+            <img style="width:115px;height:158px;" src="@movie.图片url" />
+            <p>电影：<span>@movie.名字</span></p>
+            <p>时长：<span>@movie.时长</span></p>
+            <p>座位：</p>
+            <ul id="seats_chose"></ul>
+            <p>票数：<span id="tickects_num">0</span></p>
+            <p>总价：<b>￥<span id="total_price">0</span></b></p>
+
+            <input type="button" class="btn" onclick="PayAction();" value="确定购买" />
+
+            <div id="legend"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.seat-charts.js"></script>
+    <script type="text/javascript">
+        var price = @movie.票价; //电影票价
+        $(document).ready(function () {
+            var $cart = $('#seats_chose'), //座位区
+                $tickects_num = $('#tickects_num'), //票数
+                $total_price = $('#total_price'); //票价总额
+
+            //JS排座次
+            @if (zwList != null && zwList.Count > 0)
+            {
+                int r = 1;
+                string strrow = "";
+                string ids = "";
+                for (var i = 0; i < zwList.Count; i++)
+                {
+                    if (zwList[i].行位置 == r)
+                    {
+                        strrow += "c";
+                        ids += "'" + zwList[i].座位ID + "',";
+                    }
+                    else
+                    {
+                        r = zwList[i].行位置;
+                        strrow += "','c";
+                        ids = ids.Remove(ids.Length - 1, 1);
+                        ids += "],['" + zwList[i].座位ID + "',";
+                    }
+                }
+                ids = ids.Remove(ids.Length - 1, 1);
+                <text>
+                    var map = ['@Html.Raw(strrow)'];
+                    var name = [[@Html.Raw(ids)]];
+                </text>
+            }
+
+            var sc = $('#seat_area').seatCharts({
+                map: map,
+                naming: {//设置行列等信息
+                    top: false, //不显示顶部横坐标（行）
+                    getLabel: function (character, row, column) { //返回座位信息
+                        return character;
+                    },
+                    getData: function (dataList) {
+                        console.log(dataList)
+                        return dataList;
+                    },
+                    data: name
+                },
+                legend: {//定义图例
+                node: $('#legend'),
+                    items: [
+                        ['c', 'available', '可选座'],
+                        ['c', 'unavailable', '已售出']
+                    ]
+                },
+                click: function () {
+                    if (this.status() == 'available') { //若为可选座状态，添加座位
+                        $('<li>' + (this.settings.row + 1) + '排' + this.settings.label + '座</li>')
+                            .attr('id', 'cart-item-' + this.settings.id)
+                            .data('seatId', this.settings.id)
+                            .appendTo($cart);
+
+                        $tickects_num.text(sc.find('selected').length + 1); //统计选票数量
+                        $total_price.text(getTotalPrice(sc) + price);//计算票价总金额
+
+                        return 'selected';
+                    } else if (this.status() == 'selected') { //若为选中状态
+
+                        $tickects_num.text(sc.find('selected').length - 1);//更新票数量
+                        $total_price.text(getTotalPrice(sc) - price);//更新票价总金额
+                        $('#cart-item-' + this.settings.id).remove();//删除已预订座位
+
+                        return 'available';
+                    } else if (this.status() == 'unavailable') { //若为已售出状态
+                        return 'unavailable';
+                    } else {
+                        return this.style();
+                    }
+                }
+            });
+
+           //设置已售出的座位
+           @if (gmList != null && gmList.Count > 0)
+           {
+               string zy = "";
+               foreach (MovieModel.Seats zw in gmList)
+               {
+                   zy += "'"+zw.行位置+"_" + zw.列位置 + "',";
+               }
+               zy = zy.Remove(zy.Length - 1, 1);
+               <text>
+                    sc.get([@Html.Raw(zy)]).status('unavailable');
+               </text>
+            }
+        });
+
+        function getTotalPrice(sc) { //计算票价总额
+            var total = 0;
+            sc.find('selected').each(function () {
+                total += price;
+            });
+            return total;
+        }
+
+        function PayAction() {
+
+            var zw = '';
+            $("#seats_chose li").each(function (i) {
+                zw += "" + $(this).text().slice($(this).text().indexOf("排") + 1).replace("座","") + ",";
+            });
+            zw = zw.substring(0, zw.length - 1);
+
+            $.ajax({
+                url: "/Tickets/PayAction",
+                data: {cc: '@ViewBag.cc', zw: '[' + zw + ']'},
+                type: "POST",
+                dataType: "json",
+                success: function (data) {
+                    alert(data.msg);
+                    if (data.state) {
+                        window.location.href = "/Tickets/Index";
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

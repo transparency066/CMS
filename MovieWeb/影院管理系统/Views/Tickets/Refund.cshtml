@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "退票";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>退票</title>
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>影票ID</th>
+                <th>拥有者账号ID</th>
+                <th>场次ID</th>
+                <th>座位ID</th>
+                <th>购票时间</th>
+                <th>影票状态</th>
+                <th>退票</th>
+            </tr>
+            @if (Model != null && Model.Count > 0)
+            {
+                foreach (MovieModel.Tickets yp in Model)
+                {
+                    string zt = "";
+                    switch (yp.影票状态)
+                    {
+                        case 0:
+                            zt = "未取票"; break;
+                        case 1:
+                            zt = "已取票"; break;
+                    }
+
+                    <tr>
+                        <td>@yp.影票ID</td>
+                        <td>@yp.拥有者账号ID</td>
+                        <td>@yp.场次ID</td>
+                        <td>@yp.座位ID</td>
+                        <td>@yp.购票时间</td>
+                        <td>@zt</td>
+                        <td><a href="/Tickets/RefundAction?id=@yp.影票ID">退票</a></td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr><td colspan="7"> 暂未查询到相关数据！</td></tr>
+            }
+        </table>
+
+    </div>
+</body>
+</html>

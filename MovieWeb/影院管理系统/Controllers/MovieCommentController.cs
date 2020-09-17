@@ -51,7 +51,7 @@ namespace MovieWeb.Controllers
                     ViewBag.commentCode = 0;
                 }
             }
-            return Index();
+            return RedirectToAction("Index");
         }
     }
 }

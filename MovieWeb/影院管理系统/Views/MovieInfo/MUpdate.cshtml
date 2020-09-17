@@ -3,15 +3,29 @@
 }
 
 <style type="text/css">
-    #center {
-        width: 1000px;
-        height: 1500px;
-        margin: 0 auto;
-        padding-left: 150px;
+    .result {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 20px;
     }
 
-    h2 {
+    .center-btn {
+        margin: 0 auto;
+        position: relative;
+        top: 20px;
+    }
+
+    .center {
+        margin: 20px auto;
+    }
+
+    .content {
+        margin: 0 auto;
+    }
+
+    .add-title {
         text-align: center;
+        margin-bottom: 30px;
     }
 
     .left1 {
@@ -31,6 +45,8 @@
 
     #getback2 {
         visibility: hidden;
+        position: relative;
+        top: 20px;
     }
 </style>
 <script src="~/Scripts/jquery-3.3.1.js"></script>
@@ -111,9 +127,7 @@
                                 + "<br>该影片的时长：" + data.Time
                                 + "<br>该影片的上线日期：" + data.Ondate
                                 + "<br>该影片的下线日期：" + data.Outdate
-                                + "<br>该影片的票价：" + data.Price
-                                + "<br>该影片的简介：" + data.Intro
-                                + "<br>该影片的url：" + data.Url + "<br>";
+                                + "<br>该影片的票价：" + data.Price;
                         }
                         else if (data.flag == 2) {
                             alert("修改影片信息失败!影片的名字或ID不能重复!")
@@ -151,8 +165,6 @@
                             + "<br>该影片的下线日期：" + data.Outdate
                             + "<br>该影片的时长：" + data.Time
                             + "<br>该影片的票价：" + data.Price
-                            + "<br>该影片的简介：" + data.Intro
-                            + "<br>该影片的url：" + data.Url+"<br>";
                             //+ '<table><tr><td><input type="button" class="btn-danger" value="确定删除" id="delect" /></td><td></td></tr></table>';
                         $("#getback").html(result);
                         // $("#getbackbtn").html(btn);
@@ -186,10 +198,10 @@
         )
 </script>
 
-<div id="center">
-    <h2>查找/更改影片信息</h2>
+<div class="col-md-12 center">
+    <div class="add-title"><h2>查找/更改影片信息</h2></div>
     <form>
-        <table>
+        <table class="content">
             <tr>
                 <td class="left1">请输入要查找/更新的影片ID：</td>
                 <td><input type="text" class="right1" id="id" /></td>
@@ -201,11 +213,11 @@
             </tr>
         </table>
     </form>
-    <div id="getback" class="text-primary"></div>
-    <div id="getbackbtn"><table><tr><td><input type="button" class="btn-primary" value="确定更改该影片信息" id="update" /></td><td></td></tr></table></div>
-    <div id="getback2">
+    <div id="getback" class="text-primary col-md-12 result"></div>
+    <div id="getbackbtn"><table class="content"><tr><td><input type="button" class="btn-primary" value="确定更改该影片信息" id="update" /></td><td></td></tr></table></div>
+    <div id="getback2" class="center col-md-12">
         <form>
-            <table>
+            <table class="content">
                 <tr>
                     <td class="left1">影片ID：</td>
                     <td><input type="text" class="right1" id="ID" /></td>
@@ -258,5 +270,5 @@
             </table>
         </form>
     </div>
-    <div id="getback3" class="text-success"></div>
+    <div id="getback3" class="text-success col-md-12 result"></div>
 </div>

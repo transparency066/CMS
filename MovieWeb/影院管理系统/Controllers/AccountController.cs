@@ -34,6 +34,8 @@ namespace MovieWeb.Controllers
                 if (Session["ReturnToWishList"] != null) return RedirectToAction("Index", "WishList");
                 else if (Session["ReturnToViewMessage"] != null) return RedirectToAction("Index", "ViewMessage");
                 else if (Session["ReturnToSubmitComplaint"] != null) return RedirectToAction("Index", "SubmitComplaint");
+                else if(Session["ReturnToUserCenter"]!=null) return RedirectToAction("Index", "UserCenter");
+                else if (Session["ReturnToHistoryList"] != null) return RedirectToAction("HistoryList", "UserCenter");
                 else return RedirectToAction("Index", "Home");
             }
             else//管理员登录成功
@@ -56,7 +58,7 @@ namespace MovieWeb.Controllers
             int RegisterCode = user.Register(account.UserName, account.PassWord,account.Name,account.PhoneNumber,account.Sex);
             if (RegisterCode == 0)//注册失败
             {
-                if (account.UserName != null && account.PassWord != null && account.Name != null && account.PhoneNumber != null) ViewBag.LoginCode = 0;
+                if (account.UserName != null && account.PassWord != null && account.Name != null && account.PhoneNumber != null) ViewBag.RegisterCode = 0;
                 else ViewBag.RegisterCode = -1;
                 return View();
             }

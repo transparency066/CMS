@@ -2,10 +2,28 @@
     ViewBag.Title = "用户评论";
 }
 <link rel="stylesheet" href="~/Content/layui"></link>
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-<body>
-    欢迎回来，管理员 @ViewBag.admin
+<style>
+    .center {
+        text-align: center
+    }
+    .content-title {
+        margin-bottom: 20px;
+        padding: 0;
+        border-radius: 2px;
+        height: 26px;
+        text-align:center;
+    }
+
+    .title-text {
+        font-size: 32px;
+        color: #ef4238;
+        line-height: 26px;
+        font-weight: 700;
+    }
+</style>
+<div class="col-md-12 content-title">
+    <span class="title-text">用户评论</span>
+</div>
     <table class="layui-table">
         <colgroup>
             <col span="1" style="width: 8%;">
@@ -16,29 +34,26 @@
         </colgroup>
         <thead>
             <tr>
-                <th>影票ID</th>
-                <th>账号ID</th>
-                <th>评论时间</th>
-                <th>评论内容</th>
-                <th>操作</th>
+                <th><div class="center"><span>影片ID</span></div></th>
+                <th><div class="center"><span>账号ID</span></div></th>
+                <th><div class="center"><span>评论时间</span></div></th>
+                <th><div class="center"><span>评论内容</span></div></th>
+                <th><div class="center"><span>操作</span></div></th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 @foreach(System.Data.DataRow film in  @ViewBag.data){
             <tr>
-                <td>@film["影票ID1"]</td>
-                <td>@film["账号ID1"]</td>
-                <th>@film["评论时间"]</th>
-                <td>@film["评论内容"]</td>
+                <td><div class="center"><span>@film["影片ID"]</span></div></td>
+                <td><div class="center"><span>@film["账号ID"]</span></div></td>
+                <th><div class="center"><span>@film["评论时间"]</span></div></th>
+                <td><div class="center"><span>@film["评论内容"]</span></div></td>
                 <td>
-                    <a href='delComment?pid=@film["影票ID1"]&id=@film["账号ID1"]'>删除</a>
+                    <div class="center"><span><a href='delComment?pid=@film["影片ID"]&id=@film["账号ID"]'>删除</a></span></div>
                 </td>
             </tr>
             }
             </tr>
         </tbody>
     </table>
-
-</body>
-</html>

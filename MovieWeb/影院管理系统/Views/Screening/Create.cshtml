@@ -1,0 +1,144 @@
+﻿@using MovieWeb.Models
+@model ScreeningDataModel
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .content-title {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .title-text {
+        font-size: 26px;
+        color: #ef4238;
+    }
+
+    .input-index {
+        margin-top: 12px;
+    }
+
+    .index-text {
+        font-size: 22px;
+        color: aqua;
+    }
+
+    .auto-table {
+        margin-left: 300px;
+    }
+
+    .margin-div {
+        margin: 10px 0;
+    }
+
+    .submit-btn {
+        margin-left: 145px;
+        margin-top: 20px;
+    }
+
+    .submit {
+        width: 200px;
+        height: 40px;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+</style>
+<div class="tpl-content-wrapper active">
+
+
+    <div class="row-content am-cf">
+
+
+        <div class="row">
+
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title am-fl">
+                            <div class="content-title col-md-12">
+                                <span class="title-text">新建场次</span>
+                            </div>
+                        </div>
+                        <div class="widget-function am-fr">
+                            <a href="javascript:;" class="am-icon-cog"></a>
+                        </div>
+                    </div>
+                    <div class="widget-body am-fr">
+
+                        <div class="auto-table col-md-6">
+
+                            @using (Html.BeginForm("Create", "Screening", FormMethod.Post, new { @class = "am-form tpl-form-line-form" }))
+                            {
+                                <div class="am-form-group col-md-12 margin-div">
+                                    <div class="col-md-3">
+                                        <label for="user-phone" class="am-u-sm-3 am-form-label input-index">
+                                            <span class="tpl-form-line-small-title index-text">场次ID</span>
+                                        </label>
+                                    </div>
+                                    <div class="am-u-sm-9 col-md-9">
+                                        @Html.TextBoxFor(now => now.screening_id, new { })
+                                        <small>@Html.ValidationMessageFor(now => now.screening_id, "", new { @class = "text-danger" }) </small>
+                                        @if (ViewBag.Screening_error != null)
+                                        {
+                                            <small>@ViewBag.Screening_error</small>
+                                        }
+
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group col-md-12 margin-div">
+                                    <div class="col-md-3">
+                                        <label for="user-name" class="am-u-sm-3 am-form-label input-index">
+                                            <span class="tpl-form-line-small-title index-text">影片ID</span>
+                                        </label>
+                                    </div>
+                                    <div class="am-u-sm-9 col-md-9">
+                                        @Html.TextBoxFor(now => now.film_id, new { })
+                                        <small>@Html.ValidationMessageFor(now => now.film_id, "", new { @class = "text-danger" }) </small>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group col-md-12 margin-div">
+                                    <div class="col-md-3">
+                                        <label for="user-intro" class="am-u-sm-3 am-form-label input-index index-text">大厅ID</label>
+                                    </div>
+                                    <div class="am-u-sm-9 col-md-9">
+                                        @Html.TextBoxFor(now => now.hall_id, new { })
+                                        <small>@Html.ValidationMessageFor(now => now.hall_id, "", new { @class = "text-danger" }) </small>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group col-md-12 margin-div">
+                                    <div class="col-md-3">
+                                        <label for="user-intro" class="am-u-sm-3 am-form-label input-index index-text">放映时间</label>
+                                    </div>
+                                    <div class="am-u-sm-9 col-md-9">
+                                        @Html.TextBoxFor(now => now.start_time, new { })
+                                        <small>@Html.ValidationMessageFor(now => now.start_time, "", new { @class = "text-danger" }) </small>
+                                        @if (ViewBag.error != null)
+                                        {
+                                            <small>@ViewBag.error</small>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <div class="col-md-12">
+                                            <div class="submit-btn col-md-3">
+                                                <button type="submit" class="submit btn btn-success">提交</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

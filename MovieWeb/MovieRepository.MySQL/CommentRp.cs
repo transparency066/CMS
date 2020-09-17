@@ -24,7 +24,7 @@ namespace MovieRepository.MySQL
         //获取所有评论
         public List<Comment> GetComments(string mid)
         {
-            string sql = "select * from 评论记录 where 影片ID=" + mid;
+            string sql = "select * from 评论记录 where 影片ID='" + mid+"'";
 
             var result = new List<Comment>();
             using (MySqlConnection connection = new MySqlConnection(connectionString))

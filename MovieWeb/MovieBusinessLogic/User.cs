@@ -13,15 +13,15 @@ namespace MovieBusinessLogic
     {
         //用户登录注册
         private MovieRepository.MySQL.AccountRp account = new MovieRepository.MySQL.AccountRp();
-        
-        public int Login(string UserName,string PassWord)//登录
+
+        public int Login(string UserName, string PassWord)//登录
         {
-            return account.CheckAccount(UserName,PassWord);
+            return account.CheckAccount(UserName, PassWord);
         }
 
-        public int Register(string UserName,string PassWord,string Name,string PhoneNumber,int Sex)
+        public int Register(string UserName, string PassWord, string Name, string PhoneNumber, int Sex)
         {
-            return account.CreateAccount(UserName, PassWord,Name,PhoneNumber,Sex);
+            return account.CreateAccount(UserName, PassWord, Name, PhoneNumber, Sex);
         }
 
         //收藏影片
@@ -30,6 +30,11 @@ namespace MovieBusinessLogic
         public List<wishModel> getWishModels(string uid)
         {
             return wish_rp.GetWishModels(uid);
+        }
+
+        public bool isInWishList(string uid, string movieID)
+        {
+            return wish_rp.IsInWishList(uid, movieID);
         }
 
         public bool addWishModels(string uid, string movieID, DateTime wishtime)
@@ -81,13 +86,13 @@ namespace MovieBusinessLogic
         private FilmRp film = new FilmRp();
 
         //搜索影片功能
-        public DataRowCollection QueryFilm(string key)
+        public List<SearchMovie> QueryFilm(string key)
         {
             return film.queryFilms(key);
         }
-        public Boolean Rate(String id, String s,String uid)
+        public Boolean Rate(String id, String s, String uid)
         {
-            return film.rate(id, s, uid);
+            return film.Rate(id, s, uid);
         }
         public String getMark(String id)
         {
@@ -96,6 +101,14 @@ namespace MovieBusinessLogic
         public DataRow getFilmById(String id)
         {
             return film.queryFilmById(id);
+        }
+        public List<RecommendMovie> GetRecommendMovies(string[] InitialType, string InitialId)
+        {
+            return film.GetRecommendMovies(InitialType, InitialId);
+        }
+        public List<RankMovie> GetRankMovies()
+        {
+            return film.GetRankMovies();
         }
     }
 }

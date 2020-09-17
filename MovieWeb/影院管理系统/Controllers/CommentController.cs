@@ -13,14 +13,9 @@ namespace MovieWeb.Controllers
         private MovieBusinessLogic.Admin admin = new MovieBusinessLogic.Admin();
         public ActionResult Comments()
         {
-            if (Session["aid"] != null)
-            {
-                ViewBag.data = admin.queryComments();
-                ViewBag.admin = Session["aid"];
-                return View();
-            }
-            else
-                throw new UnauthorizedAccessException("权限不足");
+            ViewBag.data = admin.queryComments();
+            ViewBag.admin = Session["aid"];
+            return View();
         }
         public String DelComment(String pid,String id)
         {

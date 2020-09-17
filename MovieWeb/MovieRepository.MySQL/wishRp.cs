@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using MovieModel;
+using System.Data;
 
 namespace MovieRepository.MySQL
 {
@@ -15,7 +16,7 @@ namespace MovieRepository.MySQL
 
         public List<wishModel> GetWishModels(string uid)//获取收藏影片信息
         {
-            string sql = "select 影片ID,收藏时间,名字,图片url,上映日期,下线日期,简介 from 收藏记录 natural join 影片 where 账号ID=@uid";
+            string sql = "select 影片ID,收藏时间,名字,图片url,上映日期,下线日期,简介 from 收藏记录 natural join 影片 where 账号ID=@uid order by 收藏时间 desc";
             var result = new List<wishModel>();
             using (MySqlConnection conn = new MySqlConnection(connectionstring))
             {
@@ -47,6 +48,24 @@ namespace MovieRepository.MySQL
                 }
             }
             return result;
+        }
+
+        public bool IsInWishList(string uid, string movieID)
+        {
+            string sql = "select * from 收藏记录 where 账号ID=@uid and 影片ID=@movieID";
+            bool flag = true;
+            using (MySqlConnection conn = new MySqlConnection(connectionstring))
+            {
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.Add(new MySqlParameter("@uid", uid));
+                cmd.Parameters.Add(new MySqlParameter("@movieID", movieID));
+                MySqlDataAdapter reader = new MySqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                reader.Fill(ds, "收藏记录");
+                DataTable dt = ds.Tables["收藏记录"];
+                if (dt.Rows.Count == 0) flag = false;
+            }
+            return flag;
         }
 
         public bool AddWishModels(string uid,string movieID,DateTime wishtime)//添加收藏影片

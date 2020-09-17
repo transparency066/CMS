@@ -1,0 +1,92 @@
+﻿@using MovieWeb.Models
+@model SeatsListModel
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .center {
+        text-align: center;
+    }
+    .content-title {
+        font-size: 26px;
+        color: #ef4238;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .widget-title {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+</style>
+<link rel="stylesheet" href="~/Content/layui"></link>
+<div class="tpl-content-wrapper active">    
+    <div class="row-content am-cf">
+        <div class="row">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title  am-cf"><span class="content-title">座位列表</span></div>
+
+
+                    </div>
+                    <div class="widget-body  am-fr">
+
+
+
+                        <div class="am-u-sm-12">
+                            <table class="layui-table">
+                                <colgroup>
+                                    <col span="1" style="width: 20%;">
+                                    <col span="1" style="width: 20%;">
+                                    <col span="1" style="width: 20%;">
+                                    <col span="1" style="width: 20%;">
+                                    <col span="1" style="width: 20%;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th><div class="center"><span>座位ID</span></div></th>
+                                        <th><div class="center"><span>放映厅ID</span></div></th>
+                                        <th><div class="center"><span>行</span></div></th>
+                                        <th><div class="center"><span>列</span></div></th>
+                                        <th><div class="center"><span>是否空闲</span></div></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="datas">
+                                    @if (Model.SeatsList.Count > 0)
+                                    {
+                                        foreach (var i in Model.SeatsList)
+                                        {
+                                    <tr>
+                                        <td><div class="center"><span>@i.seats_id</span></div></td>
+                                        <td><div class="center"><span>@i.hall_id</span></div></td>
+                                        <td><div class="center"><span>@i.x</span></div></td>
+                                        <td><div class="center"><span>@i.y</span></div></td>
+                                        <td><div class="center">
+                                             @if (i.flag == 1)
+                                             {
+                                                 <span>预订</span>
+                                             }
+                                             else
+                                             {
+                                                 <span>空闲</span>
+                                             }
+                                            </div></td>
+                                    </tr>
+                                        }
+                                    }
+                                    <!-- more data -->
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

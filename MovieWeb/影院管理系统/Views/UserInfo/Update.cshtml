@@ -3,15 +3,17 @@
     ViewBag.Title = "Update";
 }
 <style type="text/css">
-    #center {
-        width: 1000px;
-        height: 1000px;
-        margin: 0 auto;
-        padding-left: 150px;
+    .center {
+        margin: 20px auto;
     }
 
-    h2 {
+    .content {
+        margin: 0 auto;
+    }
+
+    .add-title {
         text-align: center;
+        margin-bottom: 30px;
     }
 
     .left1 {
@@ -30,7 +32,21 @@
     }
     #getback2{
         visibility:hidden;
+        position:relative;
+        top:20px;
     }
+    .result {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 20px;
+    }
+
+    .center-btn {
+        margin: 0 auto;
+        position: relative;
+        top: 20px;
+    }
+
 </style>
 
 <script src="~/Scripts/jquery-3.3.1.js"></script>
@@ -94,7 +110,7 @@
                                 + "<br>该用户的新昵称：" + data.Name
                                 + "<br>该用户的新密码：" + data.PassWord
                                 + "<br>该用户的新电话：" + data.PhoneNumber
-                                + "<br>该用户的新性别(1是男，0是女）：" + data.Sex;
+                                + "<br>该用户的新性别：" + (data.Sex == 1 ? "男" : "女");
                         }
                         else if (data.flag == 2) {
                             alert("修改用户信息失败!用户的昵称或账号不能重复!")
@@ -128,7 +144,7 @@
                         var result = "<br>成功查找到用户：" + data.Name + "<br>该用户的账号：" + data.UserName
                             + "<br>该用户的密码：" + data.PassWord
                             + "<br>该用户的电话：" + data.PhoneNumber
-                            + "<br>该用户的性别(1是男，0是女）：" + data.Sex;
+                            + "<br>该用户的性别：" + (data.Sex == 1 ? "男" : "女");
                             //+ '<table><tr><td><input type="button" class="btn-danger" value="确定删除" id="delect" /></td><td></td></tr></table>';
                         $("#getback").html(result);
                         // $("#getbackbtn").html(btn);
@@ -161,10 +177,10 @@
         )
 </script>
 
-<div id="center">
-    <h2>查找/更改用户账号信息</h2>
+<div class="center col-md-12">
+    <div class="add-title">查找/更改用户账号信息</div><h2></h2>
     <form>
-        <table>
+        <table class="content">
             <tr>
                 <td class="left1">请输入要查找/更新的用户账号：</td>
                 <td><input type="text" class="right1" id="account" /></td>
@@ -176,11 +192,11 @@
             </tr>
         </table>
     </form>
-    <div id="getback" class="text-primary"></div>
-    <div id="getbackbtn"><table><tr><td><input type="button" class="btn-primary" value="确定更改该用户信息" id="update" /></td><td></td></tr></table></div>
-    <div id="getback2">
+    <div id="getback" class="text-primary col-md-12 result"></div>
+    <div id="getbackbtn"><table class="center-btn"><tr><td><input type="button" class="btn-primary" value="确定更改该用户信息" id="update" /></td><td></td></tr></table></div>
+    <div id="getback2" class="center col-md-12">
         <form>
-            <table>
+            <table class="content">
                 <tr>
                     <td class="left1">用户账号：</td>
                     <td><input type="text" class="right1" id="newaccount" /></td>
@@ -213,6 +229,6 @@
             </table>
         </form>
     </div>
-    <div id="getback3" class="text-success"></div>
+    <div id="getback3" class="text-success col-md-12 result"></div>
 </div>
 

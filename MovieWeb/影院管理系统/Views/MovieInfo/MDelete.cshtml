@@ -3,30 +3,40 @@
     ViewBag.Title = "MDelete";
 }
 <style type="text/css">
-    #center {
-        width: 1000px;
-        height: 1000px;
-        margin: 0 auto;
-        padding-left: 150px;
-    }
-
-    h2 {
-        text-align: center;
-    }
-
     .left1 {
         width: 300px;
         text-align: left
     }
-
     .right1 {
         width: 320px;
         height: 50px;
         border: 1px solid #808080
     }
-
     #getbackbtn {
         visibility: hidden;
+    }
+    .result {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 20px;
+    }
+
+    .center-btn {
+        margin: 0 auto;
+        position: relative;
+        top: 20px;
+    }
+    .center {
+        margin: 20px auto;
+    }
+
+    .content {
+        margin: 0 auto;
+    }
+
+    .add-title {
+        text-align: center;
+        margin-bottom: 30px;
     }
 </style>
 
@@ -71,9 +81,7 @@
                             + "<br>该影片的时长：" + data.Time
                             + "<br>该影片的上线日期：" + data.Ondate
                             + "<br>该影片的下线日期：" + data.Outdate
-                            + "<br>该影片的票价：" + data.Price
-                            + "<br>该影片的简介：" + data.Intro
-                            + "<br>该影片的url：" + data.Url+"<br>";
+                            + "<br>该影片的票价：" + data.Price;
                             //+ '<table><tr><td><input type="button" class="btn-danger" value="确定删除" id="delect" /></td><td></td></tr></table>';
                         $("#getback").html(result);
                         // $("#getbackbtn").html(btn);
@@ -98,10 +106,10 @@
         )
 </script>
 
-    <div id="center">
-        <h2>删除影片信息</h2>
+    <div class="center col-md-12">
+        <div class="add-title"><h2>删除影片信息</h2></div>
         <form>
-            <table>
+            <table class="content">
                 <tr>
                     <td class="left1">请输入要删除的影片ID：</td>
                     <td><input type="text" class="right1" id="id" /></td>
@@ -113,8 +121,8 @@
                 </tr>
             </table>
         </form>
-        <div id="getback" class="text-warning"></div>
-        <div id="getbackbtn"><table><tr><td><input type="button" class="btn-danger" value="确定删除" id="delete" /></td><td></td></tr></table></div>
-        <div id="getback2" class="text-danger"></div>
+        <div id="getback" class="text-warning col-md-12 result"></div>
+        <div id="getbackbtn"><table class="content"><tr><td><input type="button" class="btn-danger" value="确定删除" id="delete" /></td><td></td></tr></table></div>
+        <div id="getback2" class="text-danger col-md-12 result"></div>
     </div>
 

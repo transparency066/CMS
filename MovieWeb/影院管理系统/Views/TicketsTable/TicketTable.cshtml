@@ -2,48 +2,63 @@
     ViewBag.Title = "票房收入与统计";
 }
 <link rel="stylesheet" href="~/Content/layui"></link>
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-<body>
-    欢迎回来，管理员 @ViewBag.admin
+<style>
+    .center{
+        text-align:center
+    }
+    .content-title {
+        margin-bottom:20px;
+        padding: 0;
+        border-radius: 2px;
+        height: 26px;
+        text-align:center;
+    }
+    .title-text {
+        font-size: 32px;
+        color: #ef4238;
+        line-height: 26px;
+        font-weight: 700;
+    }
+
+</style>
+<div class="col-md-12 content-title">
+    <span class="title-text">票房收入与统计</span>
+</div>
     <table class="layui-table">
         <colgroup>
-            <col span="1" style="width: 8%;">
-            <col span="1" style="width: 26%;">
-            <col span="1" style="width: 8%;">
-            <col span="1" style="width: 8%;">
+            <col span="1" style="width: 14%;">
+            <col span="1" style="width: 20%;">
             <col span="1" style="width: 16%;">
-            <col span="1" style="width: 12%;">
+            <col span="1" style="width: 8%;">
+            <col span="1" style="width: 8%;">
+            <col span="1" style="width: 12%;" />
         </colgroup>
         <thead>
             <tr>
-                <th>编号</th>
-                <th>片名</th>
-                <th>类型</th>
-                <th>总人数</th>
-                <th>票价</th>
-                <th>总票房</th>
-                <th>操作</th>
+                <th><div class="center"><span>影片ID</span></div></th>
+                <th><div class="center"><span>名字</span></div></th>
+                <th><div class="center"><span>类型</span></div></th>
+                <th><div class="center"><span>总人数</span></div></th>
+                <th><div class="center"><span>票价</span></div></th>
+                <th><div class="center"><span>总票房</span></div></th>
+                @*<th>操作</th>*@
             </tr>
         </thead>
         <tbody>
             <tr>
                 @foreach(System.Data.DataRow film in  @ViewBag.data){
             <tr>
-                <td>@film["影片ID"]</td>
-                <td>@film["名字"]</td>
-                <th>@film["类型"]</th>
-                <td>@film["总人数"]</td>
-                <td>@film["票价"]</td>
-                <td>@film["总票房"]</td>
-                <td>
+                <td><div class="center"><span>@film["影片ID"]</span></div></td>
+                <td><div class="center"><span>@film["名字"]</span></div></td>
+                <th><div class="center"><span>@film["类型"]</span></div></th>
+                <td><div class="center"><span>@film["总人数"]</span></div></td>
+                <td><div class="center"><span>@film["票价"]</span></div></td>
+                <td><div class="center"><span>@film["总票房"]</span></div></td>
+                @*<td>
                     <a href='api.php?a=del&id={$v["id"]}'></a>
-                </td>
+                </td>*@
             </tr>
             }
             </tr>
         </tbody>
-    </table>
-
-</body>
-</html>
+</table>

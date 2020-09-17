@@ -19,4 +19,29 @@ namespace MovieModel
         public string Url { get; set; }
         public int flag { get; set; }
     }
+
+    public class RecommendMovie
+    {
+        public string ID { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Url { get; set; }
+    }
+
+    public class SearchMovie
+    {
+        public string ID { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Url { get; set; }
+        public float Score { get; set; }
+    }
+
+    public class RankMovie
+    {
+        public string ID { get; set; }
+        public string Name { get; set; }
+        public string Url { get; set; }
+        public int Tickets { get; set; }
+    }
 }

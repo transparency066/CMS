@@ -3,44 +3,174 @@
     ViewBag.Title = "修改个人信息";
     Layout = "/Views/Shared/_UserLayout.cshtml";
 }
-
+<link rel="stylesheet" href="~/Content/layui"> </link >
 <style>
-    .data-table{
+    /*.data-table{
         width:100%;
     }
+    th,td{
+        height:40px;
+    }*/
+    .center {
+        text-align: center
+    }
+
+    .content-title {
+        margin-bottom: 20px;
+        padding: 0;
+        border-radius: 2px;
+        height: 26px;
+        text-align: center;
+    }
+
+    .title-text {
+        font-size: 32px;
+        color: #ef4238;
+        line-height: 26px;
+        font-weight: 700;
+    }
+    .box {
+        width: 50%;
+        margin-top: 10%;
+        margin: auto;
+        padding: 28px;
+        height: 350px;
+        border: 1px #111 solid;
+        display: none; /* 默认对话框隐藏 */
+    }
+        .box.show {
+            display: block;
+        }
+
+        .box .x {
+            font-size: 18px;
+            text-align: right;
+            display: block;
+        }
+
+        .box input {
+            width: 80%;
+            font-size: 18px;
+            margin-top: 18px;
+        }
 </style>
-
-
-<table cellpadding="0" cellspacing="0" class="data-table">
+<script>
+    function disp_prompt(Tid) {
+        var i = prompt("请输入你的评分", 5)
+        var score = parseInt(i);
+        do {
+            if (score != null && score != "" && score >= 0 && score <= 10) {
+            }
+            else {
+                alert("请输入0-10之间的整数");
+                i = prompt("请输入你的评分", 5);
+                score = parseInt(i);
+                if (score != null && score != "" && score >= 0 && score <= 10) {
+                }
+            }
+        } while (score == null || score == "" || score < 0 || score > 10)
+        window.location.href = "../UserCenter/Rate?id=" +
+            Tid + "&s=" +i;
+    }
+    window.onload = function () {
+        var url = document.location.href;
+        if (url.indexOf("yes") == -1) {
+            var t = new Date();
+            window.location.href = url + "?yes=" + t.getTime();
+        }
+    }
+</script>
+<div class="col-md-12 content-title">
+    <span class="title-text">历史订票记录</span>
+</div>
+<div id='inputbox' class="box">
+    <a class='x' href='' ; onclick="msgbox(0); return false;">
+        关闭
+     </a>
+        <input type="text">
+        <input type="text">
+        <input type="button" value="确定">
+</div>
+<table class="layui-table">
+    <colgroup>
+        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 10%;">
+    </colgroup>
     <thead>
         <tr>
-            <th>影票ID</th>
-            <th>场次ID</th>
-            <th>购票时间</th>
-            <th>放映厅ID</th>
-            <th>放映厅位置</th>
-            <th>座位ID</th>
-            <th>行位置</th>
-            <th>列位置</th>
-            <th>影票状态</th>
+            <th><div class="center"><span>影票ID</span></div></th>
+            <th><div class="center"><span>电影</span></div></th>
+            <th><div class="center"><span>开映时间</span></div></th>
+            <th><div class="center"><span>购票时间</span></div></th>
+            <th><div class="center"><span>放映厅ID</span></div></th>
+            <th><div class="center"><span>放映厅位置</span></div></th>
+            <th><div class="center"><span>座位ID</span></div></th>
+            <th><div class="center"><span>行位置</span></div></th>
+            <th><div class="center"><span>列位置</span></div></th>
+            <th><div class="center"><span>影票状态</span></div></th>
+            <th><div class="center"><span>评分</span></div></th>
+            <th><div class="center"><span>退票</span></div></th>
         </tr>
     </thead>
     @if ((List<MovieModel.Ticket>)ViewBag.List != null)
     {
         foreach (var item in (List<MovieModel.Ticket>)ViewBag.List)
         {
-            <tr>
-                <td>@item.影票ID</td>
-                <td>@item.场次ID</td>
-                <td>@item.购票时间</td>
-                <td>@item.放映厅ID</td>
-                <td>@item.放映厅位置</td>
-                <td>@item.座位ID</td>
-                <td>@item.行位置</td>
-                <td>@item.列位置</td>
-                <td>@item.影票状态</td>
-            </tr>
+    <tr>
+        <td><div class="center"><span>@item.TicketID</span></div></td>
+        <td><div class="center"><span>@item.MovieName</span></div></td>
+        <td><div class="center"><span>@item.PlayTime</span></div></td>
+        <td><div class="center"><span>@item.TicketDate</span></div></td>
+        <td><div class="center"><span>@item.FangYingTingID</span></div></td>
+        <td><div class="center"><span>@item.FangYingTingPosition</span></div></td>
+        <td><div class="center"><span>@item.SeatID</span></div></td>
+        <td><div class="center"><span>@item.HangNo</span></div></td>
+        <td><div class="center"><span>@item.LieNo</span></div></td>
+        <td>
+            <div class="center">
+                @if (item.State == 0)
+                {
+                    <span>未领取</span>
+                }
+                else if (item.State == 1)
+                {
+                    <span>已领取</span>
+                }
+                else if (item.State == 2)
+                {
+                    <span>已观看</span>
+                }
+                else
+                {
+                    <span>已退票</span>
+                }
+            </div>
+        </td>
+        <td>
+            <div class="center">
+                @if (item.Mark == -1)
+                {
+                    <input type="button" class="btn btn-default" onclick="disp_prompt(@item.TicketID)" value="评分"/>
+                }
+
+                else
+                {
+                    <span>@item.Mark</span >
+                }
+            </div>
+        </td>
+        <td>
+            <a class="btn btn-danger" href="/Tickets/RefundAction?id=@item.TicketID">退票</a>
+        </td>
+    </tr>
         }
     }
-
 </table>

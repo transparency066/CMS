@@ -1,0 +1,107 @@
+﻿@using MovieWeb.Models
+@model HallDataModel
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .content-title {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .title-text {
+        font-size: 26px;
+        color: #ef4238;
+    }
+
+    .input-index {
+        margin-top: 12px;
+    }
+
+    .index-text {
+        font-size: 22px;
+        color: aqua;
+    }
+
+    .auto-table {
+        margin-left: 300px;
+    }
+
+    .margin-div {
+        margin: 10px 0;
+    }
+</style>
+
+<div class="tpl-content-wrapper active">
+
+
+    <div class="row-content am-cf">
+
+
+        <div class="row">
+
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title am-fl">
+                            <div class="content-title col-md-12"><span class="title-text">放映厅详情</span></div>
+                        </div>
+                        <div class="widget-function am-fr">
+                            <a href="javascript:;" class="am-icon-cog"></a>
+                        </div>
+                    </div>
+                    <div class="widget-body am-fr">
+
+                        <div class="auto-table col-md-6">
+
+                            @using (Html.BeginForm("Index", "Hall", FormMethod.Post, new { @class = "am-form tpl-form-line-form" }))
+                            {
+
+
+                                <div class="am-form-group col-md-12 margin-div">
+                                    <div class="col-md-3">
+                                        <label for="user-name" class="am-u-sm-3 am-form-label input-index">
+                                            <span class="tpl-form-line-small-title index-text">放映厅ID</span>
+                                        </label>
+                                    </div>
+                                    <div class="am-u-sm-9 col-md-9">
+                                        @Html.TextBoxFor(now => now.hall_id, new { Value = Model.hall_id, @readonly = "readonly" })
+
+                                        <small> </small>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group col-md-12 margin-div">
+                                    <div class="col-md-3">
+                                        <label for="user-intro" class="am-u-sm-3 am-form-label input-index index-text">容量</label>
+                                    </div>
+                                    <div class="am-u-sm-9 col-md-9">
+                                        @Html.TextBoxFor(now => now.total, new { Value = Model.total, @readonly = "readonly" })
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group col-md-12 margin-div">
+                                    <div class="col-md-3">
+                                        <label for="user-intro" class="am-u-sm-3 am-form-label input-index index-text">位置</label>
+                                    </div>
+                                    <div class="am-u-sm-9 col-md-9">
+                                        @Html.TextBoxFor(now => now.location, new { Value = Model.location, @readonly = "readonly" })
+                                    </div>
+                                </div>
+
+
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+

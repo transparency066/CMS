@@ -1,0 +1,174 @@
+﻿@using MovieWeb.Models
+@model ScreeningList
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="~/Content/layui"></link>
+<style>
+    .content-title {
+        font-size: 26px;
+        color: #ef4238;
+    }
+    .center{
+        text-align:center;
+    }
+    .widget-title {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .add-btn{
+        width:60px;
+        height:40px;
+        position:relative;
+        margin:20px auto;
+    }
+    button.add {
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+    }
+    .add-text{
+        color:#333;
+    }
+</style>
+<div class="tpl-content-wrapper active">
+    <div class="row-content am-cf">
+        <div class="row">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title  am-cf"><span class="content-title">场次列表</span></div>
+
+
+                    </div>
+                    <div class="widget-body  am-fr">
+
+
+
+
+
+                        <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+                            <div class="am-form-group tpl-table-list-select">
+                                <select id="block" data-am-selected="{searchBox: 1}" style="display: none;"></select>
+                            </div>
+                        </div>
+                        <table class="layui-table">
+                            <colgroup>
+                                <col span="1" style="width: 16%;">
+                                <col span="1" style="width: 16%;">
+                                <col span="1" style="width: 20%;">
+                                <col span="1" style="width: 16%;">
+                                <col span="1" style="width: 16%;">
+                                <col span="1" style="width: 8%;">
+                                <col span="1" style="width: 8%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th><div class="center"><span>场次ID</span></div></th>
+                                    <th><div class="center"><span>影片ID</span></div></th>
+                                    <th><div class="center"><span>放映时间</span></div></th>
+                                    <th><div class="center"><span>放映厅ID</span></div></th>
+                                    <th><div class="center"><span>座位详情</span></div></th>
+                                    <th><div class="center"><span>删除</span></div></th>
+                                    <th><div class="center"><span>修改</span></div></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    @if (Model.ScreeningDataList.Count > 0)
+                                    {
+                                        foreach (var i in Model.ScreeningDataList)
+                                        {
+                                        <tr>
+                                            <td><div class="center"><span>@i.screening_id</span></div></td>
+                                            <td><div class="center"><span>@i.film_id</span></div></td>
+                                            <td><div class="center"><span>@i.start_time</span></div></td>
+                                            <td><div class="center"><span><a href="@Url.Content("~/Hall/Index/" + i.hall_id)"> @i.hall_id</a></span></div></td>
+                                            <td><div class="center"><span><a href="@Url.Content("~/SeatsList/Index/" + i.hall_id)">查看座位详情</a></span></div></td>
+                                            <td>
+                                                <div class="center">
+                                                <span>
+                                                    @using (Html.BeginForm("Index", "Screening", FormMethod.Post))
+                                                     {
+                                                        <input type="hidden" value=@i.screening_id name="screening_id" />
+                                                        <button type="submit" class="cart-close-btn">删除</button>
+                                                     }
+                                            </span></div>
+                                            </td>
+                                            <td>
+                                                <div class="center"><span>
+                                                    <a href="@Url.Content("~/Screening/Modify/"+i.screening_id)">
+                                                        <input type="button" value="修改" name="screening_id" />
+                                                    </a></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            @*<div class="am-u-sm-12">
+                                    <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
+                                        <thead>
+                                            <tr>
+                                                <th>场次ID</th>
+                                                <th>影片ID</th>
+                                                <th>放映时间</th>
+                                                <th>放映厅ID</th>
+                                                <th>座位详情</th>
+                                                <th>操作</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="datas">
+                                            @if (Model.ScreeningDataList.Count > 0)
+                                            {
+                                                foreach (var i in Model.ScreeningDataList)
+                                                {
+                                                    <tr>
+                                                        <td>@i.screening_id</td>
+                                                        <td>@i.film_id</td>
+                                                        <td>@i.start_time</td>
+                                                        <td><a href="@Url.Content("~/Hall/Index/" + i.hall_id)"> @i.hall_id</a></td>
+                                                        <td><a href="@Url.Content("~/SeatsList/Index/" + i.hall_id)"> 查看座位详情</a></td>
+                                                        <td>
+                                                            @using (Html.BeginForm("Index", "Screening", FormMethod.Post))
+                                                            {
+                                                                <input type="hidden" value=@i.screening_id name="screening_id" />
+                                                                <button type="submit" class="cart-close-btn">删除</button>
+                                                            }
+                                                        </td>
+                                                        <td>
+
+                                                            <a href="@Url.Content("~/Screening/Modify/"+i.screening_id)">
+                                                                <input type="button" value="修改" name="screening_id" />
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                            <!-- more data -->
+                                        </tbody>
+                                    </table>
+                                </div>*@
+                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                                <div class="am-form-group">
+                                    <div class="am-btn-toolbar">
+                                        <div class="am-btn-group am-btn-group-xs">
+                                            <div class="add-btn">
+                                            <button onclick="location.href='@Url.Content("~/Screening/Create")'" type="button" class="add am-btn am-btn-default am-btn-success">
+                                                <span class="am-icon-plus add-text">新增</span>
+                                            </button>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

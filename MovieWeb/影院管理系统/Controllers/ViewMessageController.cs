@@ -30,6 +30,8 @@ namespace MovieWeb.Controllers
                     ReplyTime = message.ReplyTime,
                     Text = message.Text,
                     ComplaintTime = message.ComplaintTime,
+                    FeedBackText=message.FeedBackText,
+                    
                 }).ToList();
                 var resView = new Message()
                 {

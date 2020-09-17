@@ -55,3 +55,140 @@ D:\工程包\C#\MovieWeb\MovieModel\obj\Debug\MovieModel.csprojAssemblyReference
 D:\工程包\C#\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CopyComplete
 D:\工程包\C#\MovieWeb\MovieModel\obj\Debug\MovieModel.dll
 D:\工程包\C#\MovieWeb\MovieModel\obj\Debug\MovieModel.pdb
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\MovieModel.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\MovieModel.pdb
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\MySql.Data.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\Google.Protobuf.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\Zstandard.Net.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\Renci.SshNet.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\System.Buffers.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\System.Memory.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\bin\Debug\MySql.Data.xml
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\obj\Debug\MovieModel.csprojAssemblyReference.cache
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CoreCompileInputs.cache
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CopyComplete
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\obj\Debug\MovieModel.dll
+C:\Users\only976\Documents\WeChat Files\wxid_3yvhfxtt8ov222\FileStorage\File\2020-09\MovieWeb\MovieModel\obj\Debug\MovieModel.pdb
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\MovieModel.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\MovieModel.pdb
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\MySql.Data.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\Google.Protobuf.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\Zstandard.Net.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\Renci.SshNet.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\System.Buffers.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\System.Memory.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\bin\Debug\MySql.Data.xml
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\obj\Debug\MovieModel.csprojAssemblyReference.cache
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CoreCompileInputs.cache
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CopyComplete
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\obj\Debug\MovieModel.dll
+C:\Users\only976\Desktop\homework\MovieWeb\MovieWeb\MovieModel\obj\Debug\MovieModel.pdb
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\MovieModel.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\MovieModel.pdb
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\MySql.Data.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\Google.Protobuf.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\Zstandard.Net.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\Renci.SshNet.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\System.Buffers.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\System.Memory.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\bin\Debug\MySql.Data.xml
+C:\Users\user\Desktop\MovieWeb\MovieModel\obj\Debug\MovieModel.csprojAssemblyReference.cache
+C:\Users\user\Desktop\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CopyComplete
+C:\Users\user\Desktop\MovieWeb\MovieModel\obj\Debug\MovieModel.dll
+C:\Users\user\Desktop\MovieWeb\MovieModel\obj\Debug\MovieModel.pdb
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\MovieModel.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\MovieModel.pdb
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\Google.Protobuf.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\Zstandard.Net.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\Renci.SshNet.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\System.Buffers.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\System.Memory.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\bin\Debug\MySql.Data.xml
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\obj\Debug\MovieModel.csprojAssemblyReference.cache
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CoreCompileInputs.cache
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CopyComplete
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\obj\Debug\MovieModel.dll
+C:\Users\chj12\Desktop\MovieWeb(2)\MovieWeb\MovieModel\obj\Debug\MovieModel.pdb
+D:\360MoveData\Users\Lernbarch\Desktop\MovieWeb\MovieWeb\MovieModel\bin\Debug\MovieModel.dll
+D:\360MoveData\Users\Lernbarch\Desktop\MovieWeb\MovieWeb\MovieModel\bin\Debug\MovieModel.pdb
+D:\360MoveData\Users\Lernbarch\Desktop\MovieWeb\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CoreCompileInputs.cache
+D:\360MoveData\Users\Lernbarch\Desktop\MovieWeb\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CopyComplete
+D:\360MoveData\Users\Lernbarch\Desktop\MovieWeb\MovieWeb\MovieModel\obj\Debug\MovieModel.dll
+D:\360MoveData\Users\Lernbarch\Desktop\MovieWeb\MovieWeb\MovieModel\obj\Debug\MovieModel.pdb
+D:\360MoveData\Users\Lernbarch\Desktop\MovieWeb\MovieWeb\MovieModel\obj\Debug\MovieModel.csprojAssemblyReference.cache
+D:\MJX\C#\MovieWeb\MovieModel\bin\Debug\MovieModel.dll
+D:\MJX\C#\MovieWeb\MovieModel\bin\Debug\MovieModel.pdb
+D:\MJX\C#\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CoreCompileInputs.cache
+D:\MJX\C#\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CopyComplete
+D:\MJX\C#\MovieWeb\MovieModel\obj\Debug\MovieModel.dll
+D:\MJX\C#\MovieWeb\MovieModel\obj\Debug\MovieModel.pdb
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\MovieModel.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\MovieModel.pdb
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\MySql.Data.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\Google.Protobuf.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\Zstandard.Net.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\Renci.SshNet.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\System.Buffers.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\System.Memory.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\bin\Debug\MySql.Data.xml
+C:\Users\user\Desktop\MovieWeb2\MovieModel\obj\Debug\MovieModel.csprojAssemblyReference.cache
+C:\Users\user\Desktop\MovieWeb2\MovieModel\obj\Debug\MovieModel.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\MovieWeb2\MovieModel\obj\Debug\MovieModel.csproj.CopyComplete
+C:\Users\user\Desktop\MovieWeb2\MovieModel\obj\Debug\MovieModel.dll
+C:\Users\user\Desktop\MovieWeb2\MovieModel\obj\Debug\MovieModel.pdb
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\MovieModel.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\MovieModel.pdb
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\Google.Protobuf.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\Zstandard.Net.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\BouncyCastle.Crypto.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\Ubiety.Dns.Core.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\Renci.SshNet.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\System.Buffers.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\K4os.Compression.LZ4.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\K4os.Hash.xxHash.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\System.Memory.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\System.Numerics.Vectors.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\bin\Debug\MySql.Data.xml
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\obj\Debug\MovieModel.csprojAssemblyReference.cache
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CoreCompileInputs.cache
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\obj\Debug\MovieModel.csproj.CopyComplete
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\obj\Debug\MovieModel.dll
+D:\360MoveData\Users\Lernbarch\Desktop\新建文件夹\MovieWeb\MovieModel\obj\Debug\MovieModel.pdb

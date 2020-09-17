@@ -4,17 +4,30 @@
 }
 
 <style type="text/css">
-    #center {
-        width: 1000px;
-        height: 1000px;
-        margin: 0 auto;
-        padding-left: 150px;
-    }
-
-    h2 {
+    .result {
         text-align: center;
+        margin-top: 50px;
+        font-size: 20px;
     }
 
+    .center-btn {
+        margin: 0 auto;
+        position: relative;
+        top: 20px;
+    }
+
+    .center {
+        margin: 20px auto;
+    }
+
+    .content {
+        margin: 0 auto;
+    }
+
+    .add-title {
+        text-align: center;
+        margin-bottom: 30px;
+    }
     .left1 {
         width: 300px;
         text-align: left
@@ -118,10 +131,10 @@
 </script>
 
 
-<div id="center">
-    <h2>添加影片信息</h2>
+<div class="center col-md-12">
+    <div class="add-title"><h2>添加影片信息</h2></div>
     <form>
-        <table>
+        <table class="content">
             <tr>
                 <td class="left1">新影片ID：</td>
                 <td><input type="text" class="right1" id="newID" /></td>
@@ -173,6 +186,6 @@
             </tr>
         </table>
     </form>
-    <div id="getback" class="text-success"></div>
+    <div id="getback" class="text-success col-md-12 result"></div>
 </div>
 

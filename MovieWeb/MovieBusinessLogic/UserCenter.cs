@@ -17,7 +17,7 @@ namespace MovieBusinessLogic
         {
             return uc.UpdateUserInfo(account, name, phone, sex);
         }
-        public 用户 GetUserInfoByUID(string account)//
+        public Users GetUserInfoByUID(string account)//
         {
             return uc.GetUserInfoByUID(account);
         }

@@ -13,7 +13,7 @@ namespace MovieRepository.MySQL
         private string connectionString = "server=localhost;database=moviedb;username=root;pwd=123";
 
         //发送消息给用户
-        public int SendMessage(string uid,DateTime complainTime,string aid,DateTime replyTime,string message)
+        public int SendMessage(string uid, DateTime complainTime, string aid, DateTime replyTime, string message)
         {
             //string uid = messages.UID;
             //DateTime complainTime = messages.ComplaintTime;
@@ -21,7 +21,7 @@ namespace MovieRepository.MySQL
             //DateTime replyTime = messages.ReplyTime;
             //string message = messages.Text;
             string signString = "SELECT  反馈时间, 账号ID, 是否回复 FROM 反馈记录";
-            string queryString1 = "INSERT INTO 反馈ID SET" + " 账号ID='" + uid + "',反馈时间='" + complainTime + "'," +
+            string queryString1 = "INSERT INTO 回复内容 SET" + " 反馈账号ID='" + uid + "',反馈时间='" + complainTime + "'," +
                 " 回复管理员账号ID='" + aid + "',回复时间='" + replyTime + "',回复内容='" + message + "'";
             //string queryString2 = "START TRANSACTION;" +
             //            "SET foreign_key_checks = 0;" +
@@ -38,7 +38,7 @@ namespace MovieRepository.MySQL
                     MySqlDataReader reader = command0.ExecuteReader();
                     while (reader.Read())
                     {
-                        if (uid == reader["账号ID"].ToString() || replyTime == DateTime.Parse((reader["反馈时间"]).ToString()) || "1" == reader["是否回复"].ToString())
+                        if (uid == reader["账号ID"].ToString() && replyTime == DateTime.Parse((reader["反馈时间"]).ToString()) && "1" == reader["是否回复"].ToString())
                         {
                             reader.Close();
                             connection.Close();
@@ -68,7 +68,7 @@ namespace MovieRepository.MySQL
         //用户查看消息
         public List<Message> GetMessages(string uid)
         {
-            string sql = "select 回复管理员账号ID,回复时间,回复内容,反馈时间 from 回复内容 where 反馈账号ID=@uid";
+            string sql = "select * from 回复内容 join 反馈记录 where 反馈账号ID=@uid and 回复内容.反馈账号ID=反馈记录.账号ID and 回复内容.反馈时间=反馈记录.反馈时间";
             var result = new List<Message>();
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
@@ -86,6 +86,7 @@ namespace MovieRepository.MySQL
                             ReplyTime = reader.GetDateTime("回复时间"),
                             Text = reader.GetString("回复内容"),
                             ComplaintTime = reader.GetDateTime("反馈时间"),
+                            FeedBackText=reader.GetString("反馈内容"),
                         });
                     }
                     reader.Close();

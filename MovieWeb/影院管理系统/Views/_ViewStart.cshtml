@@ -7,15 +7,7 @@
     string[] Accout = new string[] { "modify","create","hall" };
     string[] user = new string[] { "home", "viewmessage", "wishlist","moviecomment","submitcomplaint","film" };
 
-    if (lController.Contains(controller))
-    {
-        Layout = "~/Views/Shared/_ListLayout.cshtml";
-    }
-    else if(Accout.Contains(controller))
-    {
-        Layout = "~/Views/Shared/_OperationLayout.cshtml";
-    }
-    else if (user.Contains(controller))
+     if (user.Contains(controller))
     {
         Layout = "~/Views/Shared/_UserLayout.cshtml";
     }

@@ -3,16 +3,35 @@
     ViewBag.Title = "Insert";
 }
 <style type="text/css">
-    #center
+    .center
     {
-        width:1000px;
-        height:1000px;
-        margin:0 auto;
-        padding-left:150px;
+        margin:20px auto;
     }
-    h2{text-align:center;}
-    .left1{width:300px;text-align:left}
+    .content{
+        margin:0 auto;
+    }
+    .add-title{
+        text-align:center;
+        margin-bottom:30px;
+    }
+    .left1{width:150px;text-align:left}
     .right1{width:320px;height:50px;border:1px solid #808080}
+    .sex-btn{
+        float:none;
+        width:10px;
+        display:inline;
+        position:relative;
+        left:20px;
+    }
+    .action-btn{
+        margin:20px 0;
+    }
+    .btn-container{
+        margin:0 294px;
+    }
+    .result{
+        text-align:center;
+    }
 </style>
 
 <script src="~/Scripts/jquery-3.3.1.js"></script>
@@ -37,12 +56,24 @@
                 wrongmessage = "添加失败，用户的账号长度不能小于5位\n";
                 flag = 0;
             }
+            if (account.length > 10) {
+                wrongmessage = "添加失败，用户的账号长度不能大于10位\n";
+                flag = 0;
+            }
             if (password.length < 6) {
                 wrongmessage += "添加失败，用户的密码长度不能小于6位\n";
                 flag = 0;
             }
+            if (password.length > 20) {
+                wrongmessage += "添加失败，用户的密码长度不能大于20位\n";
+                flag = 0;
+            }
             if (username.length < 3) {
                 wrongmessage += "添加失败，用户的昵称长度不能小于3位\n";
+                flag = 0;
+            }
+            if (username.length > 30) {
+                wrongmessage += "添加失败，用户的昵称长度不能大于30位\n";
                 flag = 0;
             }
             if (phone.length != 11 || str_phone != "1") {
@@ -67,7 +98,8 @@
                             var result = "<br>成功添加新用户：" + data.Name + "<br>该用户的账号：" + data.UserName
                                 + "<br>该用户的密码：" + data.PassWord
                                 + "<br>该用户的电话：" + data.PhoneNumber
-                                + "<br>该用户的性别(1是男，0是女）：" + data.Sex;
+                                + "<br>该用户的性别：" + (data.Sex == 1 ? "男" : "女");
+                                /*data.Sex*/;
                         }
                         else {
                             alert("添加用户信息失败!用户的昵称或账号不能重复!")
@@ -88,10 +120,12 @@
     });
 </script>
 
-<div id="center">
-    <h2>添加用户账号信息</h2>
+<div class="center col-md-12">
+    <div class="add-title">
+        <h2>添加用户账号信息</h2>
+    </div>
     <form>
-        <table>
+        <table class="content">
             <tr>
                 <td class="left1">新用户账号：</td>
                 <td><input type="text" class="right1" id="newaccount" /></td>
@@ -99,7 +133,7 @@
             <tr><td><br /></td></tr>
             <tr>
                 <td class="left1">新用户密码：</td>
-                <td><input type="password" class="right1" id="newpassword"/></td>
+                <td><input type="password" class="right1" id="newpassword" /></td>
             </tr>
             <tr><td><br /></td></tr>
             <tr>
@@ -109,20 +143,23 @@
             <tr><td><br /></td></tr>
             <tr>
                 <td class="left1">新用户电话：</td>
-                <td><input type="text" class="right1" id="newphone"/></td>
+                <td><input type="text" class="right1" id="newphone" /></td>
             </tr>
             <tr><td><br /></td></tr>
             <tr>
-                <td><input type="radio" name="sex" value="1" checked />新用户性别男</td>
-                <td><input type="radio" name="sex" value="0" />新用户性别女</td>
+                <td><span>新用户性别男</span><input type="radio" name="sex" value="1" checked class="sex-btn" /></td>
+                <td><span>新用户性别女</span><input type="radio" name="sex" value="0" class="sex-btn" /></td>
             </tr>
             <tr><td><br /></td></tr>
-            <tr>
-                <td><input type="reset" class="btn-warning" value="重置信息" /></td>
-                <td><input type="button" class="btn-success" value="提交信息" id="submitinf"/></td>
-            </tr>
         </table>
+        <div class="action-btn col-md-12">
+            <div class="col-md-8 btn-container">
+                <input type="reset" class="btn-warning col-md-4" value="重置信息" />
+                <input type="button" class="btn-success col-md-4" value="提交信息" id="submitinf" />
+            </div>
+            
+        </div>
     </form>
-    <div id="getback" class="text-success"></div>
+    <div id="getback" class="text-success col-md-12 result"></div>
 </div>
 

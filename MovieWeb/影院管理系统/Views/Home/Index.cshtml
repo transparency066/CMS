@@ -3,86 +3,95 @@
 }
 
 <style>
-    h5{
-        color:rgb(153,153,153);
-        margin:0;
+    h5 {
+        color: rgb(153,153,153);
+        margin: 0;
     }
-    img{
-        transition:all 0.8s ease;
+
+    img {
+        transition: all 0.8s ease;
     }
-    .owl-item:hover{
-        position:relative;
-        z-index:9999;
+
+    .owl-item:hover {
+        position: relative;
+        z-index: 9999;
     }
-    .owl-item:hover img{
-        transform:scale(1.1);
+
+        .owl-item:hover img {
+            transform: scale(1.1);
+        }
+
+    .image-item {
+        width: 100%;
     }
-    .image-item{
-        width:100%;
+
+        .image-item:hover {
+            position: relative;
+            top: -10px;
+        }
+
+    .show-each {
+        padding-left: 0;
+        padding-right: 0;
     }
-    .image-item:hover{
-        position:relative;
-        top:-10px;
+
+    .show-before::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        transition: all 0.3s ease
     }
-    .show-each{
-        padding-left:0;
-        padding-right:0;
+
+    .show-each:hover .show-before::before {
+        background-color: rgba(0,0,0,0.1);
     }
-    .show-before::before{
-        content:"";
-        display:block;
-        position:absolute;
-        width:100%;
-        height:100%;
-        background-color:rgba(0,0,0,0.5);
-        transition:all 0.3s ease
+
+    .title-text {
+        margin: 0;
+        padding: 14px 20px;
     }
-    .show-each:hover .show-before::before{
-        background-color:rgba(0,0,0,0.1);
-    }
-    .title-text{
-        margin:0;
-        padding:14px 20px;
-    }
+
     .small-text {
         color: rgb(237,75,53);
         margin-left: 10px;
         display: none;
     }
 </style>
-
 <div>
     <div class="col-md-8" style="background-color:rgb(48,48,56);height:393.6px">
         <div class="owl-carousel owl-theme">
             <div class="item" style="margin-top:10px">
-                <a href="/Home/Index"><img  src="~/img/movie/夏洛特烦恼.PNG" /></a> 
+                <a href="@Url.Action("Index","Film")?id=anSL15ol69"><img src="~/img/movie/夏洛特烦恼.PNG" /></a>
             </div>
             <div class="item" style="margin-top:10px">
-                <a href="/Home/Index"><img src="~/img/movie/战狼.PNG" /></a>
+                <a href="@Url.Action("Index","Film")?id=9hjo45Mk21"><img src="~/img/movie/战狼.PNG" /></a>
             </div>
             <div class="item" style="margin-top:10px">
-                <a href="/Home/Index"><img src="~/img/movie/你的名字.PNG" /></a>
+                <a href="@Url.Action("Index","Film")?id=085QWSd1m6"><img src="~/img/movie/你的名字.PNG" /></a>
             </div>
             <div class="item" style="margin-top:10px">
-                <a href="/Home/Index"><img src="~/img/movie/西游记之大圣归来.PNG" /></a>
+                <a href="@Url.Action("Index","Film")?id=tt4644382w"><img src="~/img/movie/西游记之大圣归来.PNG" /></a>
             </div>
             <div class="item" style="margin-top:10px">
-                <a href="/Home/Index"><img src="~/img/movie/惊天魔盗团.PNG" /></a>
+                <a href="@Url.Action("Index","Film")?id=f2fKOla89s"><img src="~/img/movie/惊天魔盗团.PNG" /></a>
             </div>
             <div class="item" style="margin-top:10px">
-                <a href="/Home/Index"><img src="~/img/movie/大鱼海棠.PNG" /></a>
+                <a href="@Url.Action("Index","Film")?id=kdwkod4512"><img src="~/img/movie/大鱼海棠.PNG" /></a>
             </div>
             <div class="item" style="margin-top:10px">
-                <a href="/Home/Index"><img src="~/img/movie/霸王别姬.PNG" /></a>
+                <a href="@Url.Action("Index","Film")?id=1516dwa45d"><img src="~/img/movie/霸王别姬.PNG" /></a>
             </div>
             <div class="item" style="margin-top:10px">
-                <a href="/Home/Index"><img src="~/img/movie/叶问3.PNG" /></a>
+                <a href="@Url.Action("Index","Film")?id=iUIj45sc13"><img src="~/img/movie/叶问3.PNG" /></a>
             </div>
             <div class="item" style="margin-top:10px">
-                <a href="/Home/Index"><img src="~/img/movie/嫌疑人X的献身.PNG" /></a>
+                <a href="@Url.Action("Index","Film")?id=lpmxYl8451"><img src="~/img/movie/嫌疑人X的献身.PNG" /></a>
             </div>
             <div class="item" style="margin-top:10px">
-                <a href="/Home/Index"><img src="~/img/movie/阿凡达.PNG" /></a>
+                <a href="@Url.Action("Index","Film")?id=dwojdoqda2"><img src="~/img/movie/阿凡达.PNG" /></a>
             </div>
         </div>
     </div>
@@ -124,50 +133,50 @@
 <div style="position:relative;top:20px">
     <div class="col-md-2">
         <div class="col-md-12">
-            <a href="/Home/Index"><img class="image-item" src="~/img/movie/嫌疑人X的献身.PNG" /></a>
+            <a href="@Url.Action("Index","Film")?id=lpmxYl8451"><img class="image-item" src="~/img/movie/嫌疑人X的献身.PNG" /></a>
         </div>
-        <p class="col-md-12"><a href="/Home/Index">嫌疑人X的献身</a></p>
+        <p class="col-md-12"><a href="@Url.Action("Index","Film")?id=lpmxYl8451">嫌疑人X的献身</a></p>
         <h5 class="col-md-12">日本推理经典改编</h5>
     </div>
     <div class="col-md-2">
         <div class="col-md-12">
-            <a href="/Home/Index"><img class="image-item" src="~/img/movie/阿凡达.PNG" /></a>
+            <a href="@Url.Action("Index","Film")?id=dwojdoqda2"><img class="image-item" src="~/img/movie/阿凡达.PNG" /></a>
         </div>
-        <p class="col-md-12"><a href="/Home/Index">阿凡达</a></p>
+        <p class="col-md-12"><a href="@Url.Action("Index","Film")?id=dwojdoqda2">阿凡达</a></p>
         <h5 class="col-md-12">超乎想象科幻巨制</h5>
     </div>
     <div class="col-md-2">
         <div class="col-md-12">
-            <a href="/Home/Index"><img class="image-item" src="~/img/movie/大鱼海棠.PNG" /></a>
+            <a href="@Url.Action("Index","Film")?id=kdwkod4512"><img class="image-item" src="~/img/movie/大鱼海棠.PNG" /></a>
         </div>
-        <p class="col-md-12"><a href="/Home/Index">大鱼海棠</a></p>
+        <p class="col-md-12"><a href="@Url.Action("Index","Film")?id=kdwkod4512">大鱼海棠</a></p>
         <h5 class="col-md-12">惊艳唯美中国画风</h5>
     </div>
     <div class="col-md-2">
         <div class="col-md-12">
-            <a href="/Home/Index"><img class="image-item" src="~/img/movie/战狼.PNG" /></a>
+            <a href="@Url.Action("Index","Film")?id=9hjo45Mk21"><img class="image-item" src="~/img/movie/战狼.PNG" /></a>
         </div>
-        <p class="col-md-12"><a href="/Home/Index">战狼</a></p>
+        <p class="col-md-12"><a href="@Url.Action("Index","Film")?id=9hjo45Mk21">战狼</a></p>
         <h5 class="col-md-12">血性演绎战地兵狼</h5>
     </div>
     <div class="col-md-2">
         <div class="col-md-12">
-            <a href="/Home/Index"><img class="image-item" src="~/img/movie/霸王别姬.PNG" /></a>
+            <a href="@Url.Action("Index","Film")?id=1516dwa45d"><img class="image-item" src="~/img/movie/霸王别姬.PNG" /></a>
         </div>
-        <p class="col-md-12"><a href="/Home/Index">霸王别姬</a></p>
+        <p class="col-md-12"><a href="@Url.Action("Index","Film")?id=1516dwa45d">霸王别姬</a></p>
         <h5 class="col-md-12">华语文艺巅峰作品</h5>
     </div>
     <div class="col-md-2">
         <div class="col-md-12">
-            <a href="/Home/Index"><img class="image-item" src="~/img/movie/夏洛特烦恼.PNG" /></a>
+            <a href="@Url.Action("Index","Film")?id=anSL15ol69"><img class="image-item" src="~/img/movie/夏洛特烦恼.PNG" /></a>
         </div>
-        <p class="col-md-12"><a href="/Home/Index">夏洛特烦恼</a></p>
+        <p class="col-md-12"><a href="@Url.Action("Index","Film")?id=anSL15ol69">夏洛特烦恼</a></p>
         <h5 class="col-md-12">年度魔性黑马喜剧</h5>
     </div>
 </div>
 <script>
     $('.owl-carousel').owlCarousel({
-        center:true,
+        center: true,
         items: 3,
         loop: true,
         margin: 10,

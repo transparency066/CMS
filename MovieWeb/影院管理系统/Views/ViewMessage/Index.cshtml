@@ -142,6 +142,11 @@
                         </div>
                         <div id=@nowcollapse class="panel-collapse collapse" role="tabpanel" aria-labelledby=@nowheading data-parent="#my_accordion">
                             <div class="panel-body">
+                                <h3>反馈内容:</h3>
+                                <p class="m2u_text">@Model.messages[i].FeedBackText</p>
+                                <p style="float:right;font-size:16px;">@Model.messages[i].ComplaintTime</p>
+                                <br />
+                                <h3>回复内容:</h3>
                                 <p class="m2u_text">@Model.messages[i].Text</p>
                             </div>
                         </div>

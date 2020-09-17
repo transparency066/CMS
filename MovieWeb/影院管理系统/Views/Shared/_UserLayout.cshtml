@@ -25,6 +25,11 @@
     <link href="~/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/owlcarousel/owl.carousel.min.js"></script>
+    <style>
+        .login-text{
+            font-size:20px;
+        }
+    </style>
 </head>
 <body>
     <div id="home1" class="container-fluid standard-bg">
@@ -43,11 +48,11 @@
                     <div class="collapse navbar-collapse js-navbar-collapse megabg dropshd ">
                         <ul class="nav navbar-nav">
                             <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                            <li><a href="single-video.html">个人信息</a></li>
+                            <li>@Html.ActionLink("个人信息", "Index", "UserCenter")</li>
                             <li>@Html.ActionLink("反馈投诉", "Index", "SubmitComplaint")</li>
                             <li>@Html.ActionLink("查看信息", "Index", "ViewMessage")</li>
                             <li>@Html.ActionLink("收藏夹", "Index", "WishList")</li>
-                            <li><a href="login.html">历史订票记录</a></li>
+                            <li>@Html.ActionLink("历史订票记录", "HistoryList", "UserCenter")</li>
                         </ul>
                         <div class="col-md-3 user-login">
                             <!--登录信息-->
@@ -57,7 +62,7 @@
                                     <img src="~/img/user-header.JPG" style="width:40px;height:40px" />
                                 </a>
                                 <div class="col-md-8">
-                                    <h4>
+                                    <h4 class="login-text">
                                         请 @Html.ActionLink("登录", "Login", "Account", null, new { @class = "link" })
                                     </h4>
                                 </div>
@@ -66,9 +71,9 @@
                             {
                                 <img src="~/img/user-header.JPG" style="width:40px;height:40px" />
                                 <div class="col-md-10">
-                                    <h4>
+                                    <h4 class="login-text">
                                         欢迎登录,@Session["uid"]
-                                        @Html.ActionLink("退出", "Cancel", "Home", null, new { @class = "link", @style = "font-size:12px" })
+                                        @Html.ActionLink("退出", "Cancel", "Home", null, new { @class = "link", @style = "font-size:14px" })
                                     </h4>
                                 </div>
                             }

@@ -45,6 +45,7 @@ namespace MovieWeb.Controllers
         }
 
         //添加影片至收藏夹
+        /*
         [HttpPost]
         public JsonResult AddWish(string addMovieID)
         {
@@ -60,6 +61,7 @@ namespace MovieWeb.Controllers
             }
             return Json("收藏夹更新成功");
         }
+        */
 
         //收藏夹删除影片
         [HttpPost]

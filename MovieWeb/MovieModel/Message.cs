@@ -13,6 +13,7 @@ namespace MovieModel
         public string AdminID { set; get; }
         public DateTime ReplyTime { set; get; }
         public string Text { set; get; }
+        public string FeedBackText { set; get; }
         public int flag { set; get; }
     }
 

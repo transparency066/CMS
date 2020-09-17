@@ -43,7 +43,7 @@ namespace MovieRepository.MySQL
         //创建账户
         public int CreateAccount(string UserName,string PassWord,string Name,string PhoneNumber,int Sex)
         {
-            string sql = "select * from 账号 where 账号ID = @username and 密码 = @password";//判断是否已存在该用户名
+            string sql = "select * from 账号 where 账号ID = @username";//判断是否已存在该用户名
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {

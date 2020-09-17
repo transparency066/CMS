@@ -1,39 +1,193 @@
-﻿@{
+﻿@using MovieWeb.Models
+@model SearchPageMovies
+@{
     ViewBag.Title = "Search";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
 
-<p>
-    <table border="1" style="margin:30px 0 30px 0">
-        <colgroup>
-            <col span="2" style="width: 15%;">
-            <col span="1" style="width: 15%;">
-            <col span="1" style="width: 15%;">
-        </colgroup>
-        <thead>
-            <tr>
-                <th>影片名</th>
-                <th>类型</th>
-                <th>时长</th>
-                <th>上映日期</th>
-                <th>下线日期</th>
-                <th>票价</th>
-            </tr>
-        </thead>
-        <tobody style="min-width:50px; max-width:150px;">
-            @foreach (System.Data.DataRow film in @ViewBag.Data)
-            {
+@*<p>
+        <table border="1" style="margin:30px 0 30px 0">
+            <colgroup>
+                <col span="2" style="width: 15%;">
+                <col span="1" style="width: 15%;">
+                <col span="1" style="width: 15%;">
+            </colgroup>
+            <thead>
                 <tr>
-                    <td><a href="@Url.Action("Index","Film")?id=@film["影片ID"]">@film["名字"]</a></td>
-                    <td>@film["类型"]</td>
-                    <td>@film["时长"]</td>
-                    <td>@film["上映日期"]</td>
-                    <td>@film["下线日期"]</td>
-                    <td>@film["票价"]</td>
+                    <th>影片名</th>
+                    <th>类型</th>
+                    <th>时长</th>
+                    <th>上映日期</th>
+                    <th>下线日期</th>
+                    <th>票价</th>
                 </tr>
-            }
-        </tobody>
-    </table>
-</p>
+            </thead>
+            <tobody style="min-width:50px; max-width:150px;">
+                @foreach (System.Data.DataRow film in @ViewBag.Data)
+                {
+                    <tr>
+                        <td><a href="@Url.Action("Index","Film")?id=@film["影片ID"]">@film["名字"]</a></td>
+                        <td>@film["类型"]</td>
+                        <td>@film["时长"]</td>
+                        <td>@film["上映日期"]</td>
+                        <td>@film["下线日期"]</td>
+                        <td>@film["票价"]</td>
+                    </tr>
+                }
+            </tobody>
+        </table>
+    </p>*@
+
+<style>
+    .search-result {
+        margin-top: 40px;
+    }
+
+    .result-title {
+        font-size: 36px;
+        color: #fff;
+    }
+
+    .fail-inform {
+        margin-top: 30px;
+    }
+
+    .inform-text {
+        color: #999;
+        font-weight: 400;
+        font-size: 26px;
+    }
+
+    .fail-advice {
+        margin-top: 27px;
+    }
+
+    .fail-title {
+        color: #ef4238;
+    }
+
+    .fail-text {
+        margin-top: 10px;
+    }
+
+    .search-movie {
+        margin-top: 30px;
+        height: 150px;
+    }
+
+    .image {
+        height: 150px;
+    }
+
+    .movie-msg {
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .movie-title {
+        font-size: 22px;
+        color: #666699;
+    }
+
+        .movie-title:hover {
+            color: red;
+            text-decoration: underline;
+        }
+
+    .movie-type {
+        margin-top: 18px;
+        font-size: 12px;
+    }
+
+    .movie-score, .no-score {
+        margin-top: 18px;
+        font-size: 28px;
+        color: orangered;
+        font-weight: 400;
+    }
+
+    .no-score {
+        font-size: 14px;
+    }
+
+    .rank-title {
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+
+    .devide-line {
+        height: 1px;
+        background-color: rgb(234,234,234);
+        /*margin:8px 0;*/
+    }
+
+    .rank-text {
+        float: left;
+        font-size: 20px;
+    }
+
+    .rank-tickets {
+        font-size: 14px;
+        position: relative;
+        top: 5px;
+        left: 40px;
+    }
+</style>
+
+<div class="col-md-8 search-result">
+    <p class="result-title">搜索结果</p>
+    @if (Model.searchMovies.Count == 0)
+    {
+        <div class="fail-inform col-md-12">
+            <p class="inform-text">很抱歉，没找到相关的影片</p>
+        </div>
+        <div class="col-md-12 fail-advice">
+            <p class="fail-title">系统建议您:</p>
+            <p class="fail-text">1.请检查输入的关键词是否有误</p>
+            <p class="fail-text">2.请缩短关键词</p>
+        </div>
+    }
+    else
+    {
+        foreach (var i in Model.searchMovies)
+        {
+            <div class="search-movie col-md-6">
+                <div class="movie-image col-md-5">
+                    <a href="@Url.Action("Index","Film")?id=@i.ID">
+                        <img src="@i.Url" class="image" />
+                    </a>
+                </div>
+                <div class="movie-msg col-md-6">
+                    <a href="@Url.Action("Index","Film")?id=@i.ID">
+                        <p class="movie-title">@i.Name</p>
+                    </a>
+                    <p class="movie-type">@i.Type</p>
+                    @if (i.Score == -1)
+                    {
+                        <p class="no-score">暂未有人评分</p>
+                    }
+                    else
+                    {
+                        <p class="movie-score">@i.Score</p>
+
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>
+<div class="col-md-4">
+    <p class="rank-title">票房排行榜</p>
+    <div class="devide-line col-md-12"></div>
+    @for (int i = 0; i < Model.rankMovies.Count(); i++)
+    {
+        <div class="rank-movie col-md-12">
+            <p class="rank-text">
+                @Model.rankMovies[i].Name
+            <p class="rank-tickets">票房:@Model.rankMovies[i].Tickets</p>
+            </p>
+        </div>
+        <div class="col-md-12 devide-line"></div>
+    }
+</div>

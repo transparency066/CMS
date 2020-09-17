@@ -66,7 +66,7 @@ namespace MovieRepository.MySQL
         //用户默认页面显示的反馈投诉情况
         public List<Complaint> GetComplaints(string uid)
         {
-            string sql = "select * from 反馈记录 where 账号ID=" + uid;
+            string sql = "select * from 反馈记录 where 账号ID='" + uid+"'";
 
             var result = new List<Complaint>();
             using (MySqlConnection connection = new MySqlConnection(connectionString))

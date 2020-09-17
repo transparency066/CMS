@@ -117,5 +117,47 @@ namespace MovieBusinessLogic
             return mark.DelComment(pid,id);
         }
 
+        private MovieRepository.MySQL.Screening_Rp screening_rp = new MovieRepository.MySQL.Screening_Rp();
+        
+        //
+        public HallModel GetHallById(string hall_id)
+        {
+            return screening_rp.GetHallByHallId(hall_id);
+        }
+
+        public List<ScreeningModel> GetAllScreenings()
+        {
+            return screening_rp.Manager_GetAllScreeningData();
+        }
+        public ScreeningModel GetScreeningsById(string screening_id)
+        {
+            return screening_rp.GetScreeningById(screening_id);
+        }
+        public void DeleteScreeningInfoById(string screening_id)
+        {
+            screening_rp.DeleteScreeningById(screening_id);
+        }
+        public void ModifyScreeningInfoById(string screening_id, string film_id, string hall_id, DateTime start_time)
+        {
+            screening_rp.ModifyScreening(screening_id, film_id, hall_id, start_time);
+        }
+        public void CreateScreeningInfoById(string screening_id, string film_id, string hall_id, DateTime start_time)
+        {
+            screening_rp.CreateScreening(screening_id, film_id, hall_id, start_time);
+        }
+        public List<SeatsModel> GetSeatsByHallId(string screening_id)
+        {
+            return screening_rp.GetSeatsByHall(screening_id);
+        }
+        public bool CheckHallUsed(string hall_id, DateTime start_time)
+        {
+            return screening_rp.CheckHallTime(hall_id, start_time);
+        }
+
+        public bool CheckScreening(string screening_id)
+        {
+            return screening_rp.CheckScreeningId(screening_id);
+        }
+
     }
 }

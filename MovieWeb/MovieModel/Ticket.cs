@@ -7,14 +7,17 @@ namespace MovieModel
 {
     public class Ticket
     {
-        public string 影票ID { get; set; }
-        public string 场次ID { get; set; }
-        public DateTime 购票时间 { get; set; }
-        public int 放映厅ID { get; set; }
-        public string 放映厅位置 { get; set; }
-        public int 座位ID { get; set; }
-        public int 行位置 { get; set; }
-        public int 列位置 { get; set; }
-        public int 影票状态 { get; set; }
+        public string TicketID { get; set; }
+        public string ChangCiID{ get; set; }
+        public string MovieName { get; set; }
+        public DateTime PlayTime { get; set; }
+        public DateTime TicketDate { get; set; }
+        public string FangYingTingID { get; set; }
+        public string FangYingTingPosition { get; set; }
+        public string SeatID { get; set; }
+        public int HangNo { get; set; }
+        public int LieNo { get; set; }
+        public int State { get; set; }
+        public float Mark { get; set; }
     }
 }

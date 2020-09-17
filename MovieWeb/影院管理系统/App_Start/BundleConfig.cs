@@ -32,6 +32,21 @@ namespace MovieWeb
          "~/Content/mjx_package/fontawesome-free/css/all.min.css",
          "~/Content/mjx_package/semantic/semantic.min.css",
          "~/Content/mjx_package/unicons-2.0.1/css/unicons.css"));
+            bundles.Add(new StyleBundle("~/Content/list").Include(
+              "~/Content/css/amazeui.min.css",
+"~/Content/css/amazeui.datatables.min.css",
+"~/Content/css/app.css"
+));
+            bundles.Add(new ScriptBundle("~/list/js").Include(
+                "~/Content/js/jquery-3.3.1.min.js",
+                "~/Content/js/admin.js",
+                "~/Content/js/theme.js",
+                "~/Content/js/amazeui.min.js.js",
+                "~/Content/js/amazeui.datatables.min.js",
+                "~/Content/js/app.js",
+                "~/Content/js/category-list.js",
+                "~/Content/js/category-add.js"
+                ));
         }
     }
 }

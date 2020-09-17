@@ -58,6 +58,10 @@
             border-left: 25px solid transparent;
             border-right: 25px solid transparent;
         }
+        .center{
+            margin:0 auto;
+            float:none;
+        }
     </style>
 </head>
 <body>
@@ -83,10 +87,10 @@
 <div class="comment-box-control">
     <button class="to_bottom" onclick="show();" id="arrow" value="0"></button>
 </div>
-    <div id="history" style="display:none">
+    <div id="history" class="col-md-12" style="display:none">
         @foreach (var i in Model.Complaints)
          {
-            <div class="col-sm-11">
+            <div class="col-sm-11 center">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <strong>@i.ComplaintTime</strong>

@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "选择场次";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    MovieModel.Movie movie = Model as MovieModel.Movie;
+    List<MovieModel.Session> ccList = MovieBusinessLogic.Session.GetList(" and 影片ID='" + movie.影片ID + "' and  `开映时间`>date_format(now(), '%Y-%m-%d %H:%i:%s') ");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>电影列表</title>
+</head>
+<body>
+    <div class="container">
+        @if (movie != null)
+        {
+            <div class="row">
+                <div class="col-lg-4">
+                    <img style="height: 322px;width:232px;" src="@movie.图片url" alt="@movie.名字">
+                </div>
+
+                <div class="col-lg-8">
+                    <h4>@movie.名字</h4>
+                    <h4>@movie.类型</h4>
+                    <h4>@movie.时长</h4>
+                    <h4>@movie.上映日期</h4>
+                    <h4>@movie.票价 元</h4>
+                    <p>@movie.简介</p>
+                </div>
+            </div>
+            <br /><hr /><br />
+
+            <table class="table">
+                @if (ccList != null && ccList.Count > 0)
+                {
+                    <tr>
+                        <th>开映时间</th>
+                        <th>放映厅ID</th>
+                        <th>选购</th>
+                    </tr>
+                    foreach (MovieModel.Session cc in ccList)
+                    {
+                        <tr>
+                            <td>@cc.开映时间</td>
+                            <td>@cc.放映厅ID</td>
+                            <td> <a class="btn btn-danger" href="/Tickets/XSeats?id=@movie.影片ID&yt=@cc.放映厅ID&cc=@cc.场次ID">选座购票</a></td>
+                        </tr>
+                    }
+
+                }
+                else
+                {
+                    <tr><td>暂未安排场次！</td></tr>
+                }
+            </table>
+        }
+    </div>
+</body>
+</html>

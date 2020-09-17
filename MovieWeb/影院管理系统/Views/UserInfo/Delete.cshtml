@@ -2,30 +2,37 @@
     ViewBag.Title = "Delect";
 }
 <style type="text/css">
-    #center {
-        width: 1000px;
-        height: 1000px;
+    .center {
+        margin: 20px auto;
+    }
+    .content {
         margin: 0 auto;
-        padding-left: 150px;
     }
-
-    h2 {
+    .add-title {
         text-align: center;
+        margin-bottom: 30px;
     }
-
     .left1 {
         width: 300px;
         text-align: left
     }
-
     .right1 {
         width: 320px;
         height: 50px;
         border: 1px solid #808080
     }
-
     #getbackbtn{
         visibility:hidden;
+    }
+    .result{
+        text-align:center;
+        margin-top:50px;
+        font-size:20px;
+    }
+    .center-btn{
+        margin:0 auto;
+        position:relative;
+        top:20px;
     }
 </style>
 
@@ -35,7 +42,6 @@
     $(document).ready(function ()
     {
         $("#delete").click(function () {
-            alert("test");
             var account = currentacc;
             var result = { "Account": account };
             $.get('@Url.Action("DeletetheUser", "UserInfo")', result)
@@ -68,7 +74,7 @@
                         var result = "<br>成功查找到用户：" + data.Name + "<br>该用户的账号：" + data.UserName
                             + "<br>该用户的密码：" + data.PassWord
                             + "<br>该用户的电话：" + data.PhoneNumber
-                            + "<br>该用户的性别(1是男，0是女）：" + data.Sex;
+                            + "<br>该用户的性别：" + (data.Sex == 1 ? "男" : "女");
                             //+ '<table><tr><td><input type="button" class="btn-danger" value="确定删除" id="delect" /></td><td></td></tr></table>';
                         $("#getback").html(result);
                         // $("#getbackbtn").html(btn);
@@ -93,10 +99,10 @@
         )
 </script>
 
-<div id="center">
-    <h2>删除用户账号信息</h2>
+<div class="center col-md-12">
+    <div class="add-title"><h2>删除用户账号信息</h2></div>
     <form>
-        <table>
+        <table class="content">
             <tr>
                 <td class="left1">请输入要删除的用户账号：</td>
                 <td><input type="text" class="right1" id="account" /></td>
@@ -108,8 +114,8 @@
             </tr>
         </table>
     </form>
-    <div id="getback" class="text-warning"></div>
-    <div id="getbackbtn"><table><tr><td><input type="button" class="btn-danger" value="确定删除" id="delete" /></td><td></td></tr></table></div>
-    <div id="getback2" class="text-danger"></div>
+    <div id="getback" class="text-warning col-md-12 result"></div>
+    <div id="getbackbtn" ><table class="center-btn"><tr><td><input type="button" class="btn-danger" value="确定删除" id="delete" /></td><td></td></tr></table></div>
+    <div id="getback2" class="text-danger col-md-12 result"></div>
 </div>
 

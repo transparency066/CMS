@@ -1,18 +1,112 @@
 ﻿@using MovieWeb.Models;
 @model AllMListViewModel
 @{
-    ViewBag.Title = "MAllinf";
+    ViewBag.Title = "查看所有电影";
 }
-
-
-
-
-<h2>所有影片的信息</h2>
-<h3>影院已上架 @Model.Count 部电影</h3>
-<ul>
-   
-    @foreach(var post in Model.AllMs)
-    {
-    <li>影片ID: @post.ID  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名字: @post.Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 类型: @post.Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 时长: @post.Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 上映日期: @post.Ondate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 下线日期: @post.Outdate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 票价: @post.Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 简介: @post.Intro &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 图片url: @post.Url</li>
+<link rel="stylesheet" href="~/Content/layui"></link>
+<style>
+    .movieinfo-title {
+        margin-top: 20px;
+        padding: 0;
+        border-radius: 2px;
+        height: 26px;
     }
-</ul>
+
+    .title-text {
+        font-size: 26px;
+        color: #ef4238;
+        line-height: 26px;
+        font-weight: 700;
+    }
+
+    .movie-num-text {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 16px;
+        margin-top: 10px;
+        margin-left: 10px;
+        color: #666;
+    }
+
+    .movie-number {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 20px;
+        margin-top: 6px;
+        margin-left: 6px;
+        margin-right: 6px;
+        color: #ffb400 !important;
+    }
+
+    .movieinfo-list {
+        margin-top: 24px;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .img {
+        width: 60px;
+    }
+</style>
+
+<div class="col-md-12 movieinfo-title">
+    <span class="title-text">所有影片信息</span>
+    <span class="movie-num-text">影片数量为 <span class="movie-number">@Model.Count </span></span>
+</div>
+<div class="col-md-12 movieinfo-list">
+    <table class="layui-table">
+        <colgroup>
+            <col span="1" style="width: 12.5%;">
+            <col span="1" style="width: 12.5%;">
+            <col span="1" style="width: 12.5%;">
+            <col span="1" style="width: 12.5%;">
+            <col span="1" style="width: 12.5%;">
+            <col span="1" style="width: 12.5%;">
+            <col span="1" style="width: 12.5%;">
+            <col span="1" style="width: 12.5%;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th><div class="col-md-12 center"><span>影片ID</span></div></th>
+                <th><div class="col-md-12 center"><span>名字</span></div></th>
+                <th><div class="col-md-12 center"><span>类型</span></div></th>
+                <th><div class="col-md-12 center"><span>时长</span></div></th>
+                <th><div class="col-md-12 center"><span>上映日期</span></div></th>
+                <th><div class="col-md-12 center"><span>下线日期</span></div></th>
+                <th><div class="col-md-12 center"><span>票价</span></div></th>
+                <th><div class="col-md-12 center"><span>图片</span></div></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (var post in Model.AllMs)
+                {
+                <tr>
+                    <td><div class="col-md-12 center"><span>@post.ID</span></div></td>
+                    <td><div class="col-md-12 center"><span>@post.Name</span></div></td>
+                    <td><div class="col-md-12 center"><span>@post.Type</span></div></td>
+                    <td><div class="col-md-12 center"><span>@post.Time</span></div></td>
+                    <td><div class="col-md-12 center"><span>@post.Ondate</span></div></td>
+                    <td><div class="col-md-12 center"><span>@post.Outdate</span></div></td>
+                    <td><div class="col-md-12 center"><span>@post.Price</span></div></td>
+                    <td><div class="col-md-12 center"><img src=@post.Url class="img" /></div></td>
+                </tr>
+            }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    @*<h2>所有影片的信息</h2>
+        <h3>影院已上架 @Model.Count 部电影</h3>
+        <ul>
+
+            @foreach(var post in Model.AllMs)
+            {
+            <li>影片ID: @post.ID  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名字: @post.Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 类型: @post.Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 时长: @post.Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 上映日期: @post.Ondate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 下线日期: @post.Outdate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 票价: @post.Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 简介: @post.Intro &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 图片url: @post.Url</li>
+            }
+        </ul>*@
