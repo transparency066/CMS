@@ -48,12 +48,6 @@ namespace MovieWeb.Controllers
             DateTime time = DateTime.Now;
             int reply = 0;
             int complainCode = 0;
-            //if (Session["uid"] == null)
-            //{
-            //    return RedirectToAction("Login", "Account");
-            //}
-            //else
-            //{
             string uid = System.Web.HttpContext.Current.Session["uid"].ToString();
             if (user.Complain(time, uid, content, reply) > 0)
             {

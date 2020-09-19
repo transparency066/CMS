@@ -82,7 +82,6 @@ namespace MovieWeb.Controllers
             Session.Remove("ReturnToWishList");
             if (Session["uid"] == null) return Redirect("/Account");
             string uid = Session["uid"].ToString();
-            //string uid = "1000000000";
             MovieBusinessLogic.User user = new MovieBusinessLogic.User();
             DateTime nowtime = DateTime.Now;
             if (user.isInWishList(uid, addMovieID) == false)

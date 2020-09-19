@@ -13,7 +13,6 @@ namespace MovieWeb.Controllers
         //默认页面
         public ActionResult Index()
         {
-            //string uid = "1000000000";
             if (Session["uid"] == null)
             {
                 if (Session["ReturnToWishList"] == null) Session["ReturnToWishList"] = "true";

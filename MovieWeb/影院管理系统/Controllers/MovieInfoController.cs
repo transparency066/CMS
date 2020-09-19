@@ -95,10 +95,6 @@ namespace MovieWeb.Controllers
         //删除电影功能
         public JsonResult DeletetheMovie()
         {
-            //Movieinfo movieinf = new Movieinfo()
-            //{
-            //    ID = Request.QueryString["id"]
-            //};
             string ID = Request.QueryString["id"];
             int flag = admin.DeleteMovie(ID);
             return Json(flag, JsonRequestBehavior.AllowGet);

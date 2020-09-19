@@ -103,21 +103,18 @@ namespace MovieWeb.Controllers
                 HttpContext.Response.End();
                 return;
             }
-
             MovieModel.Tickets yp = MovieBusinessLogic.Tickets.GetModel(" and 影票ID='" + id + "' ");
             if (yp == null)
             {
                 HttpContext.Response.Write("<script type =\"text/javascript\">alert('无此id信息');window.history.back();</script>");
                 HttpContext.Response.End(); return;
             }
-
             if (yp.影票状态 != 0 && yp.影票状态 != 1)
             {
                 HttpContext.Response.Write("<script type =\"text/javascript\">alert('影票已经使用或超期');window.history.back();</script>");
                 HttpContext.Response.End();
                 return;
             }
-
             yp.影票状态 = 3;
             if (MovieBusinessLogic.Tickets.Update(yp) > 0)
             {

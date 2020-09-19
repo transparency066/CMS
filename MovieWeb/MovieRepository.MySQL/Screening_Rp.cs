@@ -70,17 +70,32 @@ namespace MovieRepository.MySQL
                 return result;
             }
 
-            public List<SeatsModel> GetSeatsByHall(string hall_id)
+        public List<SeatsModel> GetSeatsByHall(string screening_id)
+        {
+            string hall_id;
+            string preQuery = "select 放映厅ID from 场次 where 场次ID = @screening_id";
+            using (MySqlConnection preConn = new MySqlConnection(connectionstring))
             {
-                string queryString = "select * from 座位 where 放映厅ID=@hall_id";
-                var result = new List<SeatsModel>();
-                using (MySqlConnection conn = new MySqlConnection(connectionstring))
+                preConn.Open();
+                using (MySqlCommand preCmd = new MySqlCommand(preQuery, preConn))
                 {
-                    conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(queryString, conn))
-                    {
-                        cmd.Parameters.Add(new MySqlParameter("@hall_id", hall_id));
-                        MySqlDataReader reader = cmd.ExecuteReader();
+                    preCmd.Parameters.Add(new MySqlParameter("@screening_id", screening_id));
+                    MySqlDataReader reader = preCmd.ExecuteReader();
+                    reader.Read();
+                    hall_id = reader.GetString("放映厅ID");
+                }
+            }
+
+            string queryString = "select * from 座位 where 放映厅ID=@hall_id";
+            var result = new List<SeatsModel>();
+            using (MySqlConnection conn = new MySqlConnection(connectionstring))
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(queryString, conn))
+                {
+                    cmd.Parameters.Add(new MySqlParameter("@hall_id", hall_id));
+
+                    MySqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
@@ -93,11 +108,12 @@ namespace MovieRepository.MySQL
                         };
                         using (MySqlCommand _cmd = new MySqlCommand())
                         {
+                            _cmd.Parameters.Add(new MySqlParameter("@screening_id", screening_id));
                             using (MySqlConnection connection = new MySqlConnection(connectionstring))
                             {
                                 connection.Open();
                                 _cmd.Connection = connection;
-                                _cmd.CommandText = "select * from 影票 where 座位ID='" + seat.seats_id + "'";
+                                _cmd.CommandText = "select * from 影票 where 场次ID=@screening_id and 座位ID='" + seat.seats_id + "'";
                                 MySqlDataReader _reader = _cmd.ExecuteReader();
                                 seat.flag = _reader.HasRows ? 1 : 0;
                                 _reader.Close();
@@ -106,14 +122,14 @@ namespace MovieRepository.MySQL
                         }
                         result.Add(seat);
                     }
-                        reader.Close();
-                    }
-                    conn.Close();
+                    reader.Close();
                 }
-                return result;
+                conn.Close();
             }
+            return result;
+        }
 
-            public void DeleteScreeningById(string screening_id)
+        public void DeleteScreeningById(string screening_id)
             {
                 string sql = "delete from 场次 where 场次ID=@screening_id";
                 using (MySqlConnection conn = new MySqlConnection(connectionstring))
@@ -216,7 +232,7 @@ namespace MovieRepository.MySQL
             }
         public bool CheckHallTime(string hall_id, DateTime start_time)
         {
-            string queryString = "select * from 场次 where 放映厅ID=@hall_id and TIMESTAMPDIFF(hour,开映时间,@start_time)<2;";
+            string queryString = "select * from 场次 where 放映厅ID=@hall_id and ((TIMESTAMPDIFF(hour,开映时间,@start_time1)<2 and TIMESTAMPDIFF(hour,开映时间,@start_time2)>=0) or (TIMESTAMPDIFF(hour,开映时间,@start_time3)>-2 and (TIMESTAMPDIFF(hour,开映时间,@start_time4)<=0)))";
             var result = new List<ScreeningModel>();
             using (MySqlConnection conn = new MySqlConnection(connectionstring))
             {
@@ -225,7 +241,10 @@ namespace MovieRepository.MySQL
                 {
 
                     cmd.Parameters.Add(new MySqlParameter("@hall_id", hall_id));
-                    cmd.Parameters.Add(new MySqlParameter("@start_time", start_time));
+                    cmd.Parameters.Add(new MySqlParameter("@start_time1", start_time));
+                    cmd.Parameters.Add(new MySqlParameter("@start_time2", start_time));
+                    cmd.Parameters.Add(new MySqlParameter("@start_time3", start_time));
+                    cmd.Parameters.Add(new MySqlParameter("@start_time4", start_time));
 
                     MySqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())

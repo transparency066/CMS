@@ -48,7 +48,8 @@
             if (flag == 1) {
                 var currentDate = new Date();
                 var results = {
-                    "ReplyTime": currentDate.toLocaleDateString(),
+                    "ReplyTime": currentDate.toLocaleDateString() + " " + currentDate.getHours() + ":" +
+                        currentDate.getMinutes() + ":" + currentDate.getSeconds(),
                     "AdminID": "@Session["aid"]",
                     "ReplyMessage": $("#reply").val(),
                     "UID":"@Model.UID",

@@ -60,7 +60,6 @@ namespace MovieWeb.Controllers
                     ViewBag.error = "请输入有效时间";
                     return View();
                 }
-
                 MovieBusinessLogic.Admin sc_ma = new MovieBusinessLogic.Admin();
                 if (!sc_ma.CheckHallUsed(newData.hall_id, newData.start_time))
                 {
@@ -72,7 +71,6 @@ namespace MovieWeb.Controllers
                     ViewBag.Screening_error = "该场次ID已经存在";
                     return View();
                 }
-
                 string screening_id = newData.screening_id;
                 string film_id = newData.film_id;
                 string hall_id = newData.hall_id;

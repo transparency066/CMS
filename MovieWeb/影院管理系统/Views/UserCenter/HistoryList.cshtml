@@ -156,19 +156,29 @@
         </td>
         <td>
             <div class="center">
-                @if (item.Mark == -1)
-                {
-                    <input type="button" class="btn btn-default" onclick="disp_prompt(@item.TicketID)" value="评分"/>
-                }
-
-                else
-                {
-                    <span>@item.Mark</span >
+                @{
+                    var date = DateTime.Now;
+                    if (date > item.PlayTime)
+                    {
+                        if (item.Mark == -1)
+                        {
+                            <input type="button" class="btn btn-default" onclick="disp_prompt(@item.TicketID)" value="评分" />
+                        }
+                        else
+                        {
+                            <span>@item.Mark</span>
+                        }
+                    }
                 }
             </div>
         </td>
         <td>
-            <a class="btn btn-danger" href="/Tickets/RefundAction?id=@item.TicketID">退票</a>
+            @{
+                if (date < item.PlayTime)
+                {
+                    <a class="btn btn-danger" href="/Tickets/RefundAction?id=@item.TicketID">退票</a>
+                }
+            }
         </td>
     </tr>
         }

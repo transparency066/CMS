@@ -15,7 +15,7 @@
         zwList = MovieBusinessLogic.Seats.GetList(" and 放映厅ID='" + ytModel.放映厅ID + "' order by 座位id asc ");
 
         //获得被占用的票
-        gmList = MovieBusinessLogic.Seats.GetList(" and 放映厅ID='" + ytModel.放映厅ID + "' and 座位ID in (select 座位ID from 影票 where (影票状态=0 or 影票状态=1)) ");
+        gmList = MovieBusinessLogic.Seats.GetList(" and 放映厅ID='" + ytModel.放映厅ID + "' and 座位ID in (select 座位ID from 影票 where ((影票状态=0 or 影票状态=1) and 场次ID = '" + ViewBag.cc + "')) ");
     }
     else
     {
